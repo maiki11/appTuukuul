@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="appTuukuul" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,87 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-sG-YQk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tuukuul-logo-wide-white" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-Ma-lPf">
+                                <rect key="frame" x="66" y="70" width="243" height="74"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" background="at-sign" translatesAutoresizingMaskIntoConstraints="NO" id="K1l-ND-p2F">
+                                <rect key="frame" x="36" y="164" width="303" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="password" translatesAutoresizingMaskIntoConstraints="NO" id="eU0-2b-5Jb">
+                                <rect key="frame" x="36" y="214" width="303" height="30"/>
+                                <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rd9-M3-G1g">
+                                <rect key="frame" x="36" y="264" width="303" height="32"/>
+                                <color key="backgroundColor" red="0.33725490196078434" green="0.70588235294117641" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Iniciar sesión">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ibi-nG-egR"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JI2-ix-b0F" customClass="KDLoadingView" customModule="KDLoadingView">
+                                <rect key="frame" x="66" y="216" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" red="0.33725490196078434" green="0.70588235294117641" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" red="0.10980392156862745" green="0.13725490196078433" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="WB8-sG-YQk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bib-OL-4fK"/>
+                            <constraint firstItem="I4c-Ma-lPf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="GBN-cH-WDw"/>
+                            <constraint firstItem="Rd9-M3-G1g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="HNC-LK-h8a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rd9-M3-G1g" secondAttribute="trailing" constant="20" id="Qw6-WG-K3s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eU0-2b-5Jb" secondAttribute="trailing" constant="20" id="Sau-NZ-ssC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I4c-Ma-lPf" secondAttribute="trailing" constant="50" id="UJW-PB-z9v"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WB8-sG-YQk" secondAttribute="bottom" id="Xnd-FX-Dkj"/>
+                            <constraint firstItem="eU0-2b-5Jb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ZZV-3C-852"/>
+                            <constraint firstItem="K1l-ND-p2F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="agy-rN-aYD"/>
+                            <constraint firstItem="I4c-Ma-lPf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="fsY-Gb-vKV"/>
+                            <constraint firstItem="Rd9-M3-G1g" firstAttribute="top" secondItem="eU0-2b-5Jb" secondAttribute="bottom" constant="20" id="iWK-q5-tiD"/>
+                            <constraint firstItem="K1l-ND-p2F" firstAttribute="top" secondItem="I4c-Ma-lPf" secondAttribute="bottom" constant="20" id="miC-RY-uuA"/>
+                            <constraint firstItem="WB8-sG-YQk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rVu-94-r1p"/>
+                            <constraint firstAttribute="trailing" secondItem="WB8-sG-YQk" secondAttribute="trailing" id="tur-mv-kxe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K1l-ND-p2F" secondAttribute="trailing" constant="20" id="v0e-XL-Btd"/>
+                            <constraint firstItem="eU0-2b-5Jb" firstAttribute="top" secondItem="K1l-ND-p2F" secondAttribute="bottom" constant="20" id="vSd-aC-YYj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="K1l-ND-p2F" id="V62-Wa-eC0"/>
+                        <outlet property="loading" destination="JI2-ix-b0F" id="bF7-Ob-vhd"/>
+                        <outlet property="passTextField" destination="eU0-2b-5Jb" id="LoT-gk-ym8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="at-sign" width="16" height="16"/>
+        <image name="background" width="719" height="1280"/>
+        <image name="password" width="16" height="16"/>
+        <image name="tuukuul-logo-wide-white" width="250" height="74"/>
+    </resources>
 </document>

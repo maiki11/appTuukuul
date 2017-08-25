@@ -7,7 +7,11 @@
 //
 
 import UIKit
-
+import ReSwift
+import ReSwiftRouter
+import ReSwiftRecorder
+let defaults = UserDefaults.standard
+let store = Store<AppState>(reducer: AppReducer(), state: nil)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        guard let email = defaults.value(forKey: "email") else{
+            return true
+        }
+        guard let pass = defaults.value(forKey: "password") else{
+            return true
+        }
+        
+        store.dispatch(LogInAction(password: pass as! String, email: email as! String))
         // Override point for customization after application launch.
         return true
     }
