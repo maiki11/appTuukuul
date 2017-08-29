@@ -75,12 +75,11 @@ extension ViewController : StoreSubscriber {
             loading.startAnimating()
             break
         case .Finished(let u as User):
-            self.performSegue(withIdentifier: "preSegue", sender: u)
+            self.performSegue(withIdentifier: "home", sender: u)
             break
         case .Failed(let m as Murmur):
             // Show and hide a message after delay
-            Whisper.show(whistle: m, action: .show(0.5))
-            
+            Whisper.show(whistle: m, action: .show(1.0))
             break
         default:
             break

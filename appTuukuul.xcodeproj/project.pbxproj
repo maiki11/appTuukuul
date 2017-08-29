@@ -32,6 +32,10 @@
 		84B9840D1F4812DD00E7F337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B9840B1F4812DD00E7F337 /* LaunchScreen.storyboard */; };
 		84B984181F4812DE00E7F337 /* appTuukuulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B984171F4812DE00E7F337 /* appTuukuulTests.swift */; };
 		84B984231F4812DE00E7F337 /* appTuukuulUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B984221F4812DE00E7F337 /* appTuukuulUITests.swift */; };
+		84F5FBF01F52532700549E93 /* RecentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBEF1F52532700549E93 /* RecentsController.swift */; };
+		84F5FBF21F52861F00549E93 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF11F52861F00549E93 /* UINavigationController.swift */; };
+		84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF31F52A15500549E93 /* ProfileController.swift */; };
+		84F5FBF61F52B17A00549E93 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF51F52B17A00549E93 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		84B9841E1F4812DE00E7F337 /* appTuukuulUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appTuukuulUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B984221F4812DE00E7F337 /* appTuukuulUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appTuukuulUITests.swift; sourceTree = "<group>"; };
 		84B984241F4812DE00E7F337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F5FBEF1F52532700549E93 /* RecentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsController.swift; sourceTree = "<group>"; };
+		84F5FBF11F52861F00549E93 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		84F5FBF31F52A15500549E93 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		84F5FBF51F52B17A00549E93 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		B6252D96647306C2BCF6A205 /* Pods_appTuukuulUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A9550749A41E8C313FBE15 /* Pods-appTuukuul.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appTuukuul.debug.xcconfig"; path = "Pods/Target Support Files/Pods-appTuukuul/Pods-appTuukuul.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8884BB6F3C97AF0E748562 /* Pods_appTuukuulTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,10 +123,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841BD0951F53FEF8002394A6 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
 		846B1B791F4824CA00EA265D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				846B1B7A1F48256800EA265D /* UIViewController.swift */,
+				84F5FBF11F52861F00549E93 /* UINavigationController.swift */,
+				84F5FBF51F52B17A00549E93 /* UIView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +215,7 @@
 		84B984011F4812DD00E7F337 /* appTuukuul */ = {
 			isa = PBXGroup;
 			children = (
+				841BD0951F53FEF8002394A6 /* cells */,
 				846B1B921F48409400EA265D /* Services */,
 				846B1B8D1F483F9400EA265D /* Reducers */,
 				846B1B881F483C2400EA265D /* Models */,
@@ -237,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				84B984041F4812DD00E7F337 /* ViewController.swift */,
+				84F5FBEF1F52532700549E93 /* RecentsController.swift */,
+				84F5FBF31F52A15500549E93 /* ProfileController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -449,11 +469,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				846B1B831F483B8C00EA265D /* UserState.swift in Sources */,
+				84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */,
 				8426A4B31F48426600E81BAB /* Constants.swift in Sources */,
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
 				846B1B911F48406000EA265D /* UserReducer.swift in Sources */,
 				846B1B9A1F48420000EA265D /* WorkgroupService.swift in Sources */,
+				84F5FBF61F52B17A00549E93 /* UIView.swift in Sources */,
+				84F5FBF01F52532700549E93 /* RecentsController.swift in Sources */,
 				846B1B8F1F483FA500EA265D /* AppReducer.swift in Sources */,
 				846B1B7E1F483A2600EA265D /* UserActions.swift in Sources */,
 				846B1B8C1F483C9F00EA265D /* Workgroup.swift in Sources */,
@@ -466,6 +489,7 @@
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,
 				84B984031F4812DD00E7F337 /* AppDelegate.swift in Sources */,
+				84F5FBF21F52861F00549E93 /* UINavigationController.swift in Sources */,
 				846B1B7B1F48256800EA265D /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +643,7 @@
 			baseConfigurationReference = B8A9550749A41E8C313FBE15 /* Pods-appTuukuul.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 42R6MX9256;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -633,6 +658,7 @@
 			baseConfigurationReference = DF8AB154B3B1DC4BD1FD3094 /* Pods-appTuukuul.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 42R6MX9256;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

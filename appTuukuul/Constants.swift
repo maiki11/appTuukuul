@@ -13,6 +13,7 @@ struct Constants {
     struct ServerApi {
         static let url = "http://tuukuul.net/index.php/Api/"
         static let fileurl = "http://tuukuul.net/index.php/Api/"
+        static let filesurl = "http://tuukuul.net"
         static let headers: HTTPHeaders = [
             "Content-Type": "application/json"
         ]

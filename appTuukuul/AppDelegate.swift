@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         store.dispatch(LogInAction(password: pass as! String, email: email as! String))
         // Override point for customization after application launch.
         return true

@@ -25,7 +25,7 @@ struct UserReducer: Reducer {
         case let action as LogInAction:
             if action.email != nil {
                 state.status = .loading
-                login(whit: action.email, password: action.password)
+                login(with: action.email, password: action.password)
             }
             break
         case let action as GetUserAction:
@@ -53,7 +53,7 @@ struct UserReducer: Reducer {
         return state
     }
     
-    func login(whit email: String, password: String ) -> Void {
+    func login(with email: String, password: String ) -> Void {
         authProvider.request(.login(username: email, password: password), completion: { result in
             switch result {
             case .success(let response):
@@ -68,13 +68,15 @@ struct UserReducer: Reducer {
                     //}
                     //token = t
                     //authPlugin = AccessTokenPlugin(token: token)
-                    if let userJson = repos.value(forKey: "user") as? NSDictionary {
+                    if let userJson = repos.value(forKey: "Datos") as? NSDictionary {
                         //print("TOKEN:" ,token)
+                        print(userJson)
                         let user  = User.from(userJson)
-                        defaults.set(email, forKey: "email")
-                        defaults.set(password, forKey: "password")
+                        //print(user)
+                        //defaults.set(email, forKey: "email")
+                        //defaults.set(password, forKey: "password")
                         store.state.userState.user = user
-                        store.state.userState.status = .Finished(user!)
+                        store.state.userState.status = .Finished(User())
                         //store.dispatch(GetWorkgroupAction())
                         //store.dispatch(GetWeeksAction())
                     }
