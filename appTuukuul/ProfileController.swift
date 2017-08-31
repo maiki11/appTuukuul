@@ -21,6 +21,7 @@ class ProfileController: UIViewController{
     @IBOutlet weak var articlesBtn: UIButton!
     @IBOutlet weak var viewBtn: UIView!
     @IBOutlet weak var dataInfo: UITableView!
+    let sections: [String] = ["Datos","Intereses"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,21 +79,21 @@ class ProfileController: UIViewController{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String!{
-        if (section == 0){
-            return "Datos"
-        }
-        if (section == 1){
-            return "Intereses"
-        }
-        return " "
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let vw = UIView()
+        vw.backgroundColor = UIColor.red
+        let label = UILabel()
+        label.text = self.sections[section]
+        label.frame = CGRect(x: 5, y: 5, width: 50, height: 30)
+        vw.addSubview(label)
+        return vw
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

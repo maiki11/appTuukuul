@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let pass = passTextField.text, !pass.isEmpty else {
             return
         }
-        
+
         store.dispatch(LogInAction(password: pass, email: email))
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

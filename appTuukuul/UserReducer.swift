@@ -73,8 +73,8 @@ struct UserReducer: Reducer {
                         print(userJson)
                         let user  = User.from(userJson)
                         //print(user)
-                        //defaults.set(email, forKey: "email")
-                        //defaults.set(password, forKey: "password")
+                        defaults.set(email, forKey: "email")
+                        defaults.set(password, forKey: "password")
                         store.state.userState.user = user
                         store.state.userState.status = .Finished(User())
                         //store.dispatch(GetWorkgroupAction())
