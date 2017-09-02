@@ -16,10 +16,10 @@ struct WorkgroupReducer: Reducer {
     func handleAction(action: Action, state: WorkgroupState?) -> WorkgroupState {
         var state = state ?? WorkgroupState(workgroups: [], status: .none)
         switch action {
-        case let action as GetWorkgroupAction:
-            if token != "" {
+        case let action as GetUserWorkgroupsAction:
+            if action.uid != "" {
                 state.status = .loading
-                //getEnterprise(id: action.id)
+                getUserWorkgroups(uid: action.uid)
             }
             break
         /*case is GetWeeksAction:
@@ -43,6 +43,31 @@ struct WorkgroupReducer: Reducer {
             break
         }
         return state
+    }
+    
+    func getUserWorkgroups(uid: String) -> Void {
+        workgroupProvider.request(.getUserWorkgroups(uid: uid), completion: { result in
+            switch(result){
+            case .success(let response):
+                print(response)
+                do {
+                    
+                    let rep: NSDictionary = try response.mapJSON() as! NSDictionary
+                    let array:NSArray = rep.value(forKey: "Datos") as! NSArray
+                    let workgroups = Workgroup.from(array) ?? []
+                    store.state.workgroupState.workgroups = workgroups
+                    store.state.workgroupState.status = .none
+                } catch MoyaError.jsonMapping(let error){
+                    print("Error \(error)")
+                } catch {
+                    print("sabe")
+                }
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        })
     }
     
     /*func getEnterprise(id: Int) -> Void {

@@ -15,5 +15,6 @@ target 'appTuukuul' do
   pod 'Whisper'
   pod 'KDLoadingView', '~> 1.0.0'
   pod 'SwipeCellKit'
+  pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
 
 end

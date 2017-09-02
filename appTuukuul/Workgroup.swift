@@ -14,22 +14,22 @@ struct Workgroup : Mappable {
     static let kId = "id"
     static let kName = "name"
     static let kImg = "img"
-    static let kMembers = "members"
-    static let kAdmin = "admin"
-    static let kCover = "cover"
+//    static let kMembers = "members"
+//    static let kAdmin = "admin"
+//    static let kCover = "cover"
     
     var id: Int?
     var name: String?
     var img: String?
-    var cover: String?
-    var admin: String?
+//    var cover: String?
+//    var admin: String?
     
     init(map: Mapper) throws {
-        try self.id = map.from("id")
-        try self.img = map.from(Workgroup.kImg)
-        try self.name = map.from(Workgroup.kName)
-        try self.cover = map.from(Workgroup.kCover)
-        try self.admin = map.from(Workgroup.kAdmin)
+        self.id = map.optionalFrom("id")
+        self.img = map.optionalFrom(Workgroup.kImg)
+        self.name = map.optionalFrom(Workgroup.kName)
+//        try self.cover = map.from(Workgroup.kCover)
+//        try self.admin = map.from(Workgroup.kAdmin)
         //try self.members = map.from(Workgroup.kMembers)
     }
     init() {
@@ -60,9 +60,9 @@ extension WorkgroupBindible {
         if let nameLbl = self.nameLbl {
             nameLbl.text = workgroup.name
         }
-        if let adminLbl = self.adminLbl {
-            adminLbl.text = workgroup.admin
-        }
+//        if let adminLbl = self.adminLbl {
+//            adminLbl.text = workgroup.admin
+//        }
         /*if let imgUIImage = self.imgUIImage {
             imgUIImage = UIImage(contentsOfFile: workgroup.img!)
         }
