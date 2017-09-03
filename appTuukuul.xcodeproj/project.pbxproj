@@ -34,12 +34,12 @@
 		84B9840D1F4812DD00E7F337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B9840B1F4812DD00E7F337 /* LaunchScreen.storyboard */; };
 		84B984181F4812DE00E7F337 /* appTuukuulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B984171F4812DE00E7F337 /* appTuukuulTests.swift */; };
 		84B984231F4812DE00E7F337 /* appTuukuulUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B984221F4812DE00E7F337 /* appTuukuulUITests.swift */; };
+		84F0FC201F5BC86D003A8DF5 /* WorkgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0FC1F1F5BC86D003A8DF5 /* WorkgroupTableViewCell.swift */; };
 		84F5FBF01F52532700549E93 /* RecentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBEF1F52532700549E93 /* RecentsController.swift */; };
 		84F5FBF21F52861F00549E93 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF11F52861F00549E93 /* UINavigationController.swift */; };
 		84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF31F52A15500549E93 /* ProfileController.swift */; };
 		84F5FBF61F52B17A00549E93 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5FBF51F52B17A00549E93 /* UIView.swift */; };
 		8B6FE1641F578C800040DA17 /* WorkgroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */; };
-		8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */; };
 		8B6FE1681F5791600040DA17 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1671F5791600040DA17 /* UIImage.swift */; };
 		8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */; };
 		8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */; };
@@ -98,12 +98,12 @@
 		84B9841E1F4812DE00E7F337 /* appTuukuulUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appTuukuulUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B984221F4812DE00E7F337 /* appTuukuulUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appTuukuulUITests.swift; sourceTree = "<group>"; };
 		84B984241F4812DE00E7F337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F0FC1F1F5BC86D003A8DF5 /* WorkgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTableViewCell.swift; sourceTree = "<group>"; };
 		84F5FBEF1F52532700549E93 /* RecentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsController.swift; sourceTree = "<group>"; };
 		84F5FBF11F52861F00549E93 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		84F5FBF31F52A15500549E93 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		84F5FBF51F52B17A00549E93 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupsTableViewController.swift; sourceTree = "<group>"; };
-		8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTableViewCell.swift; sourceTree = "<group>"; };
 		8B6FE1671F5791600040DA17 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupDetailsViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFilesViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +144,7 @@
 		841BD0951F53FEF8002394A6 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				84F0FC1F1F5BC86D003A8DF5 /* WorkgroupTableViewCell.swift */,
 				842788021F57951A002CB06D /* InterestsTableViewCell.swift */,
 				84033D1D1F592C7F004624CC /* PersonalDataTableViewCell.swift */,
 			);
@@ -377,7 +378,7 @@
 				TargetAttributes = {
 					84B983FE1F4812DD00E7F337 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = XSFS8X2N87;
+						DevelopmentTeam = 42R6MX9256;
 						ProvisioningStyle = Automatic;
 					};
 					84B984121F4812DE00E7F337 = {
@@ -532,6 +533,7 @@
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
 				846B1B911F48406000EA265D /* UserReducer.swift in Sources */,
 				8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */,
+				84F0FC201F5BC86D003A8DF5 /* WorkgroupTableViewCell.swift in Sources */,
 				8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */,
 				846B1B9A1F48420000EA265D /* WorkgroupService.swift in Sources */,
 				84F5FBF61F52B17A00549E93 /* UIView.swift in Sources */,
@@ -550,7 +552,6 @@
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,
 				8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */,
-				8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */,
 				84B984031F4812DD00E7F337 /* AppDelegate.swift in Sources */,
 				84F5FBF21F52861F00549E93 /* UINavigationController.swift in Sources */,
 				846B1B7B1F48256800EA265D /* UIViewController.swift in Sources */,
@@ -707,7 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = XSFS8X2N87;
+				DEVELOPMENT_TEAM = 42R6MX9256;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = miguelreina.appTuukuul;
@@ -722,7 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = XSFS8X2N87;
+				DEVELOPMENT_TEAM = 42R6MX9256;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = miguelreina.appTuukuul;
