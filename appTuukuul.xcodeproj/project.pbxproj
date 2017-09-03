@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B17C53145639CF22B1A7621 /* Pods_appTuukuul.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830FEA3982C19A475EA9A252 /* Pods_appTuukuul.framework */; };
+		84033D1E1F592C7F004624CC /* PersonalDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84033D1D1F592C7F004624CC /* PersonalDataTableViewCell.swift */; };
 		8426A4B31F48426600E81BAB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426A4B21F48426600E81BAB /* Constants.swift */; };
 		8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426A4B41F4977F000E81BAB /* WorkgroupActions.swift */; };
 		8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426A4B61F497A2A00E81BAB /* ReportActions.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		830FEA3982C19A475EA9A252 /* Pods_appTuukuul.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuul.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84033D1D1F592C7F004624CC /* PersonalDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDataTableViewCell.swift; sourceTree = "<group>"; };
 		8426A4B21F48426600E81BAB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8426A4B41F4977F000E81BAB /* WorkgroupActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupActions.swift; sourceTree = "<group>"; };
 		8426A4B61F497A2A00E81BAB /* ReportActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportActions.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				842788021F57951A002CB06D /* InterestsTableViewCell.swift */,
+				84033D1D1F592C7F004624CC /* PersonalDataTableViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				846B1B831F483B8C00EA265D /* UserState.swift in Sources */,
 				84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */,
 				8426A4B31F48426600E81BAB /* Constants.swift in Sources */,
+				84033D1E1F592C7F004624CC /* PersonalDataTableViewCell.swift in Sources */,
 				842788031F57951A002CB06D /* InterestsTableViewCell.swift in Sources */,
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
