@@ -2,7 +2,7 @@
 //  UIImage.swift
 //  appTuukuul
 //
-//  Created by Developer on 8/30/17.
+//  Created by Ernesto Jaramillo on 8/30/17.
 //  Copyright © 2017 tuukuul. All rights reserved.
 //
 

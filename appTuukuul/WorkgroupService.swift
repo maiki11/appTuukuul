@@ -13,11 +13,12 @@ enum WorkgroupService {
     case getAll,
     get(id: Int),
     addUserAt(bid: Int, uid: Int),
-    deleteUser(eid: Int, uid: Int)
+    deleteUser(eid: Int, uid: Int),
+    getUserWorkgroups(uid:String)
     
 }
 extension WorkgroupService: TargetType, AccessTokenAuthorizable {
-    var baseURL: URL { return URL(string: "\(Constants.ServerApi.url)Enterprises")! }
+    var baseURL: URL { return URL(string: "\(Constants.ServerApi.url)")! }
     var path: String {
         switch self {
         case .get(let id):
@@ -28,14 +29,15 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
             return  "/AddUser"
         case .deleteUser(let eid, let uid):
             return "/\(eid)/\(uid)"
-            
+        case .getUserWorkgroups:
+            return "/getWorkgroups"
         }
     }
     var method: Moya.Method {
         switch self {
         case .getAll, .get:
             return .get
-        case .addUserAt:
+        case .addUserAt, .getUserWorkgroups:
             return .post
         case .deleteUser:
             return .delete
@@ -43,7 +45,7 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
     }
     var shouldAuthorize: Bool {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups:
             return true
         }
     }
@@ -54,25 +56,27 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
         case .addUserAt(let bid, let uid):
             return ["id_user": uid,
                     "id_enterprise": bid]
+        case .getUserWorkgroups(let uid):
+            return ["user":uid]
         }
     }
     var parameterEncoding: ParameterEncoding {
         switch self {
         case .getAll, .deleteUser, .get:
             return URLEncoding.default// Send parameters in URL for GET, DELETE and HEAD. For other HTTP methods, parameters will be sent in request body
-        case .addUserAt:
+        case .addUserAt, .getUserWorkgroups:
             return JSONEncoding.default
         }
     }
     var sampleData: Data {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups:
             return "{ \"name\": \"Harry Potter\"}".utf8Encoded
         }
     }
     var task: Task {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get:
+        case .getAll, .addUserAt, .deleteUser, .get,.getUserWorkgroups:
             return .request
         }
     }
