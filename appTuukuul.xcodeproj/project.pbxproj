@@ -39,6 +39,10 @@
 		8B6FE1641F578C800040DA17 /* WorkgroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */; };
 		8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */; };
 		8B6FE1681F5791600040DA17 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1671F5791600040DA17 /* UIImage.swift */; };
+		8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */; };
+		8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */; };
+		8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */; };
+		8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,10 @@
 		8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupsTableViewController.swift; sourceTree = "<group>"; };
 		8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTableViewCell.swift; sourceTree = "<group>"; };
 		8B6FE1671F5791600040DA17 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupDetailsViewController.swift; sourceTree = "<group>"; };
+		8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFilesViewController.swift; sourceTree = "<group>"; };
+		8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTasksViewController.swift; sourceTree = "<group>"; };
+		8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupChatViewController.swift; sourceTree = "<group>"; };
 		B6252D96647306C2BCF6A205 /* Pods_appTuukuulUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A9550749A41E8C313FBE15 /* Pods-appTuukuul.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appTuukuul.debug.xcconfig"; path = "Pods/Target Support Files/Pods-appTuukuul/Pods-appTuukuul.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8884BB6F3C97AF0E748562 /* Pods_appTuukuulTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +274,10 @@
 				84F5FBEF1F52532700549E93 /* RecentsController.swift */,
 				84F5FBF31F52A15500549E93 /* ProfileController.swift */,
 				8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */,
+				8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */,
+				8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */,
+				8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */,
+				8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -440,7 +452,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1C3BA88CA5DF45CC543B98CF /* [CP] Embed Pods Frameworks */ = {
@@ -461,6 +473,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -475,6 +488,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -510,6 +524,8 @@
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
 				846B1B911F48406000EA265D /* UserReducer.swift in Sources */,
+				8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */,
+				8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */,
 				846B1B9A1F48420000EA265D /* WorkgroupService.swift in Sources */,
 				84F5FBF61F52B17A00549E93 /* UIView.swift in Sources */,
 				84F5FBF01F52532700549E93 /* RecentsController.swift in Sources */,
@@ -522,9 +538,11 @@
 				846B1B941F4840A500EA265D /* UserService.swift in Sources */,
 				846B1B871F483BB400EA265D /* ChatState.swift in Sources */,
 				846B1B851F483BA400EA265D /* WorkgroupState.swift in Sources */,
+				8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */,
 				846B1B8A1F483C3600EA265D /* User.swift in Sources */,
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,
+				8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */,
 				8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */,
 				84B984031F4812DD00E7F337 /* AppDelegate.swift in Sources */,
 				84F5FBF21F52861F00549E93 /* UINavigationController.swift in Sources */,
