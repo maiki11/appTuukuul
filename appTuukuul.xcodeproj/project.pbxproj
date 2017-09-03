@@ -43,6 +43,8 @@
 		8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */; };
 		8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */; };
 		8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */; };
+		94B8AFF91F5BFFBA009400DA /* WTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */; };
+		94B8AFFB1F5C0031009400DA /* WorkgroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFilesViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTasksViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupChatViewController.swift; sourceTree = "<group>"; };
+		94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTaskTableViewCell.swift; sourceTree = "<group>"; };
+		94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTask.swift; sourceTree = "<group>"; };
 		B6252D96647306C2BCF6A205 /* Pods_appTuukuulUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A9550749A41E8C313FBE15 /* Pods-appTuukuul.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appTuukuul.debug.xcconfig"; path = "Pods/Target Support Files/Pods-appTuukuul/Pods-appTuukuul.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8884BB6F3C97AF0E748562 /* Pods_appTuukuulTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */,
+				94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				846B1B891F483C3600EA265D /* User.swift */,
 				846B1B8B1F483C9F00EA265D /* Workgroup.swift */,
+				94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 			files = (
 				8B6FE1641F578C800040DA17 /* WorkgroupsTableViewController.swift in Sources */,
 				846B1B831F483B8C00EA265D /* UserState.swift in Sources */,
+				94B8AFF91F5BFFBA009400DA /* WTaskTableViewCell.swift in Sources */,
 				84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */,
 				8426A4B31F48426600E81BAB /* Constants.swift in Sources */,
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
@@ -533,6 +540,7 @@
 				8B6FE1681F5791600040DA17 /* UIImage.swift in Sources */,
 				846B1B7E1F483A2600EA265D /* UserActions.swift in Sources */,
 				846B1B8C1F483C9F00EA265D /* Workgroup.swift in Sources */,
+				94B8AFFB1F5C0031009400DA /* WorkgroupTask.swift in Sources */,
 				846B1B961F48413600EA265D /* WorkgroupReducer.swift in Sources */,
 				846B1B811F483B5D00EA265D /* AppState.swift in Sources */,
 				846B1B941F4840A500EA265D /* UserService.swift in Sources */,

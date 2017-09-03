@@ -10,5 +10,7 @@ import Foundation
 import ReSwift
 struct WorkgroupState: StateType {
     var workgroups = [Workgroup]()
+    var workgroup:Workgroup!
     var status: Result<Any>
+    var tasks = [WorkgroupTask]()
 }

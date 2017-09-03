@@ -74,3 +74,19 @@ struct DeleteUserWorkgroupAction: StandardActionConvertible {
         return StandardAction(type: DeleteUserWorkgroupAction.type, payload: [:], isTypedAction: true)
     }
 }
+
+struct GetWorkgroupTasksAction: StandardActionConvertible {
+    static let type = "GET_WORKGROUP_TASKS_ACTION"
+    var wid:String!
+    init(wid: String) {
+        self.wid = wid
+    }
+    init(_ standardAction: StandardAction) {
+    }
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: GetWorkgroupTasksAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
+
