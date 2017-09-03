@@ -26,12 +26,12 @@
                   moduleName = "appTuukuul"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/miguelreina/Documents/GitHub/appTuukuul/appTuukuul/UserActions.swift"
-                  timestampString = "526108902.530095"
+                  timestampString = "526118026.333513"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
                   endingLineNumber = "26"
-                  offsetFromSymbolStart = "8">
+                  offsetFromSymbolStart = "23">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "appTuukuul"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/miguelreina/Documents/GitHub/appTuukuul/appTuukuul/UserActions.swift"
-                  timestampString = "526108902.531907"
+                  timestampString = "526118026.336048"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
                   endingLineNumber = "26"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -56,7 +56,7 @@
                   moduleName = "appTuukuul"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/miguelreina/Documents/GitHub/appTuukuul/appTuukuul/UserActions.swift"
-                  timestampString = "526108902.533496"
+                  timestampString = "526118026.338694"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
