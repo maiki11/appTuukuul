@@ -14,7 +14,7 @@ let workgroupProvider = MoyaProvider<WorkgroupService>(plugins: [authPlugin])
 
 struct WorkgroupReducer: Reducer {
     func handleAction(action: Action, state: WorkgroupState?) -> WorkgroupState {
-        var state = state ?? WorkgroupState(workgroups: [], workgroup:nil, status: .none, tasks: [])
+        var state = state ?? WorkgroupState(workgroups: [], workgroup:nil, status: .none, tasks: [], files: [])
         switch action {
         case let action as GetUserWorkgroupsAction:
             if action.uid != "" {
@@ -43,6 +43,11 @@ struct WorkgroupReducer: Reducer {
             if action.wid != nil{
                 state.status = .loading
                 getWorkgroupTasks(wid: action.wid)
+            }
+        case let action as GetWorkgroupFilesAction:
+            if action.wid != nil && action.fid != nil{
+                state.status = .loading
+                getWorkgroupFiles(wid: action.wid, fid: action.fid)
             }
         default:
             break
@@ -92,6 +97,34 @@ struct WorkgroupReducer: Reducer {
                     print("error: \(error)")
                 } catch {
                     print("Error")
+                }
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        })
+    }
+    
+    func getWorkgroupFiles(wid: String, fid:String) -> Void {
+        workgroupProvider.request(.getWorkgroupFiles(wid: wid, fid: fid), completion: { result in
+            switch(result){
+            case .success(let response):
+                do{
+                    let rep: NSDictionary = try response.mapJSON() as! NSDictionary
+                    let data: NSDictionary = try rep.value(forKey: "Datos") as! NSDictionary
+                    let folders:NSArray = data.value(forKey: "Folders") as! NSArray
+                    let files:NSArray = data.value(forKey: "Files") as! NSArray
+                    let wFolders = WorkgroupFile.from(folders) ?? []
+                    let wFiles = WorkgroupFile.from(files) ?? []
+                    
+                    store.state.workgroupState.files = wFolders + wFiles
+                    store.state.workgroupState.status = .none
+                    
+                } catch MoyaError.jsonMapping(let error){
+                    print("error: \(error)")
+                } catch {
+                    print("error")
                 }
                 break
             case .failure(let error):

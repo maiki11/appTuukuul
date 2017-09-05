@@ -39,6 +39,8 @@
 		8B6FE1641F578C800040DA17 /* WorkgroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */; };
 		8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */; };
 		8B6FE1681F5791600040DA17 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FE1671F5791600040DA17 /* UIImage.swift */; };
+		8B90F0041F5E098300C27513 /* WorkgroupFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90F0031F5E098300C27513 /* WorkgroupFile.swift */; };
+		8B90F00A1F5E369600C27513 /* WFileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90F0091F5E369600C27513 /* WFileCollectionViewCell.swift */; };
 		8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */; };
 		8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */; };
 		8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */; };
@@ -103,6 +105,8 @@
 		8B6FE1631F578C800040DA17 /* WorkgroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupsTableViewController.swift; sourceTree = "<group>"; };
 		8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTableViewCell.swift; sourceTree = "<group>"; };
 		8B6FE1671F5791600040DA17 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		8B90F0031F5E098300C27513 /* WorkgroupFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFile.swift; sourceTree = "<group>"; };
+		8B90F0091F5E369600C27513 /* WFileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFileCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BDA6DA11F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupDetailsViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFilesViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTasksViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			children = (
 				8B6FE1651F5790860040DA17 /* WorkgroupTableViewCell.swift */,
 				94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */,
+				8B90F0091F5E369600C27513 /* WFileCollectionViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				846B1B891F483C3600EA265D /* User.swift */,
 				846B1B8B1F483C9F00EA265D /* Workgroup.swift */,
 				94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */,
+				8B90F0031F5E098300C27513 /* WorkgroupFile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				846B1B8F1F483FA500EA265D /* AppReducer.swift in Sources */,
 				8B6FE1681F5791600040DA17 /* UIImage.swift in Sources */,
 				846B1B7E1F483A2600EA265D /* UserActions.swift in Sources */,
+				8B90F00A1F5E369600C27513 /* WFileCollectionViewCell.swift in Sources */,
 				846B1B8C1F483C9F00EA265D /* Workgroup.swift in Sources */,
 				94B8AFFB1F5C0031009400DA /* WorkgroupTask.swift in Sources */,
 				846B1B961F48413600EA265D /* WorkgroupReducer.swift in Sources */,
@@ -550,6 +557,7 @@
 				846B1B8A1F483C3600EA265D /* User.swift in Sources */,
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,
+				8B90F0041F5E098300C27513 /* WorkgroupFile.swift in Sources */,
 				8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */,
 				8B6FE1661F5790860040DA17 /* WorkgroupTableViewCell.swift in Sources */,
 				84B984031F4812DD00E7F337 /* AppDelegate.swift in Sources */,

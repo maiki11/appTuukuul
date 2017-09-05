@@ -34,6 +34,8 @@ class WorkgroupDetailsViewController: ButtonBarPagerTabStripViewController {
         }
         containerView.isScrollEnabled = false
         
+        print(workgroup)
+        
         self.navigationItem.title = workgroup.name
     }
 
