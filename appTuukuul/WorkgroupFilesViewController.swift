@@ -52,23 +52,48 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.files.count)
         return self.files.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.filesCollectionView.dequeueReusableCell(withReuseIdentifier: "wFileID", for: indexPath) as! WFileCollectionViewCell
+        let cell = filesCollectionView.dequeueReusableCell(withReuseIdentifier: "wFileID", for: indexPath) as! WFileCollectionViewCell
         let file = self.files[indexPath.row]
         
-        cell.fileNameLbl.text = file.name! + file.ext! == nil ? "" : file.ext!
+        cell.fileNameLbl.text = file.name!
+        cell.fileImgView.image = (file.ext == nil ? #imageLiteral(resourceName: "folder") : #imageLiteral(resourceName: "file"))
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(self.files.count)
     }
 }
 
 extension WorkgroupFilesViewController: StoreSubscriber {
     func newState(state: WorkgroupState) {
-        self.files = store.state.workgroupState.files ?? []
+        switch state.status {
+        case .failed:
+//            self.view.makeToast("Ocurrió un error, intente nuevamente")
+            break
+        case .loading:
+//            self.view.makeToastActivity(.center)
+            break
+        case .finished:
+//            self.view.hideToastActivity()
+            print("finished")
+            self.filesCollectionView.reloadData()
+            break
+        case .none:
+            break
+        default:
+            break
+        }
+        self.files = store.state.workgroupState.files
         self.filesCollectionView.reloadData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

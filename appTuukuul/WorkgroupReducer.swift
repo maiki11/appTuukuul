@@ -119,7 +119,7 @@ struct WorkgroupReducer: Reducer {
                     let wFiles = WorkgroupFile.from(files) ?? []
                     
                     store.state.workgroupState.files = wFolders + wFiles
-                    store.state.workgroupState.status = .none
+                    store.state.workgroupState.status = .finished
                     
                 } catch MoyaError.jsonMapping(let error){
                     print("error: \(error)")
