@@ -32,7 +32,8 @@ class WorkgroupDetailsViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = .black
             newCell?.label.textColor = .red
         }
-        containerView.isScrollEnabled = false
+//        containerView.isScrollEnabled = false
+        self.automaticallyAdjustsScrollViewInsets = false
         
         print(workgroup)
         
