@@ -60,7 +60,6 @@ class WorkgroupsTableViewController: UITableViewController {
         let workgroup = self.workgroups[indexPath.row]
         
         cell.nameLbl.text = workgroup.name
-        print(workgroup.img!)
         cell.imgUIImage.loadImage(urlString: "\(Constants.ServerApi.filesurl)\(workgroup.img!)")
         
         return cell
@@ -70,6 +69,7 @@ class WorkgroupsTableViewController: UITableViewController {
         if segue.identifier == "workgroupSegue"{
             let vc = segue.destination as! WorkgroupDetailsViewController
             vc.workgroup = sender as! Workgroup
+            store.state.workgroupState.workgroup = sender as! Workgroup
         }
         
     }

@@ -30,16 +30,14 @@ class WorkgroupDetailsViewController: ButtonBarPagerTabStripViewController {
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .black
-            newCell?.label.textColor = self?.purpleInspireColor
+            newCell?.label.textColor = .red
         }
-        
-        
-        self.navigationItem.title = workgroup.name!
-
+//        containerView.isScrollEnabled = false
+        self.automaticallyAdjustsScrollViewInsets = false
         
         print(workgroup)
         
-        
+        self.navigationItem.title = workgroup.name
     }
 
     override func didReceiveMemoryWarning() {
