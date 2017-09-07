@@ -46,6 +46,7 @@
 		8BDA6DA41F5A24C500FB0F6C /* WorkgroupFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */; };
 		8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */; };
 		8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */; };
+		9417D7901F60D0C400C073F2 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */; };
 		94B8AFF91F5BFFBA009400DA /* WTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */; };
 		94B8AFFB1F5C0031009400DA /* WorkgroupTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		8BDA6DA31F5A24C500FB0F6C /* WorkgroupFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupFilesViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTasksViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupChatViewController.swift; sourceTree = "<group>"; };
+		9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
 		94B8AFF81F5BFFBA009400DA /* WTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTaskTableViewCell.swift; sourceTree = "<group>"; };
 		94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTask.swift; sourceTree = "<group>"; };
 		B6252D96647306C2BCF6A205 /* Pods_appTuukuulUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_appTuukuulUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 				8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */,
 				8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */,
 				8B7B7A6A1F60B17F009D51EE /* FilePreviewViewController.swift */,
+				9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				846B1B961F48413600EA265D /* WorkgroupReducer.swift in Sources */,
 				846B1B811F483B5D00EA265D /* AppState.swift in Sources */,
 				846B1B941F4840A500EA265D /* UserService.swift in Sources */,
+				9417D7901F60D0C400C073F2 /* TaskDetailsViewController.swift in Sources */,
 				846B1B871F483BB400EA265D /* ChatState.swift in Sources */,
 				846B1B851F483BA400EA265D /* WorkgroupState.swift in Sources */,
 				8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */,

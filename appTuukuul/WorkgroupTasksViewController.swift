@@ -36,6 +36,13 @@ class WorkgroupTasksViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "taskDetails"{
+            let vc = segue.destination as! TaskDetailsViewController
+            vc.task = sender as! WorkgroupTask
+        }
+    }
 
 }
 
@@ -82,6 +89,10 @@ extension WorkgroupTasksViewController: UITableViewDelegate, UITableViewDataSour
         return [deleteAction, editAction, terminateAction]
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "taskDetails", sender: self.tasks[indexPath.row])
+    }
 }
 
 extension WorkgroupTasksViewController: StoreSubscriber {
@@ -97,6 +108,7 @@ extension WorkgroupTasksViewController: StoreSubscriber {
     
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Tareas", style: .plain, target: nil, action: nil)
     }
     
     func newState(state: WorkgroupState) {
