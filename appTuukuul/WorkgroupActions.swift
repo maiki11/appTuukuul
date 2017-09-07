@@ -13,7 +13,9 @@ import ReSwiftRecorder
 let workgroupActionTypeMap: TypeMap = [GetWorkgroupAction.type: GetWorkgroupAction.self,
                                        GetUserWorkgroupsAction.type: GetUserWorkgroupsAction.self,
                                        AddUserWorkgroupAction.type :  AddUserWorkgroupAction.self,
-                                       DeleteUserWorkgroupAction.type : DeleteUserWorkgroupAction.self]
+                                       DeleteUserWorkgroupAction.type : DeleteUserWorkgroupAction.self,
+                                       GetWorkgroupTasksAction.type: GetWorkgroupTasksAction.self,
+                                       GetWorkgroupFilesAction.type: GetWorkgroupFilesAction.self]
 
 struct GetWorkgroupAction: StandardActionConvertible {
     static let type = "GET_WORKGROUP_ACTION"
@@ -74,3 +76,35 @@ struct DeleteUserWorkgroupAction: StandardActionConvertible {
         return StandardAction(type: DeleteUserWorkgroupAction.type, payload: [:], isTypedAction: true)
     }
 }
+
+struct GetWorkgroupTasksAction: StandardActionConvertible {
+    static let type = "GET_WORKGROUP_TASKS_ACTION"
+    var wid:String!
+    init(wid: String) {
+        self.wid = wid
+    }
+    init(_ standardAction: StandardAction) {
+    }
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: GetWorkgroupTasksAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
+struct GetWorkgroupFilesAction: StandardActionConvertible {
+    static let type = "GET_WORKGROUP_FILES_ACTION"
+    var wid: String!
+    var fid: String!
+    init(wid:String, fid: String){
+        self.wid = wid
+        self.fid = fid
+    }
+    
+    init(_ standarAction: StandardAction){}
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: GetWorkgroupFilesAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
+

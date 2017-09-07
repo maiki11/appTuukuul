@@ -18,7 +18,7 @@ struct Workgroup : Mappable {
 //    static let kAdmin = "admin"
 //    static let kCover = "cover"
     
-    var id: Int?
+    var id: String?
     var name: String?
     var img: String?
 //    var cover: String?

@@ -14,7 +14,9 @@ enum WorkgroupService {
     get(id: Int),
     addUserAt(bid: Int, uid: Int),
     deleteUser(eid: Int, uid: Int),
-    getUserWorkgroups(uid:String)
+    getUserWorkgroups(uid:String),
+    getWorkgroupTasks(wid:String),
+    getWorkgroupFiles(wid:String, fid:String)
     
 }
 extension WorkgroupService: TargetType, AccessTokenAuthorizable {
@@ -31,13 +33,18 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
             return "/\(eid)/\(uid)"
         case .getUserWorkgroups:
             return "/getWorkgroups"
+        case .getWorkgroupTasks:
+            return "/getWorkgroupTasks"
+        case .getWorkgroupFiles(let wid, let fid):
+            return "/getWorkgroupFiles"
         }
+        
     }
     var method: Moya.Method {
         switch self {
         case .getAll, .get:
             return .get
-        case .addUserAt, .getUserWorkgroups:
+        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
             return .post
         case .deleteUser:
             return .delete
@@ -45,7 +52,7 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
     }
     var shouldAuthorize: Bool {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
             return true
         }
     }
@@ -58,25 +65,29 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
                     "id_enterprise": bid]
         case .getUserWorkgroups(let uid):
             return ["user":uid]
+        case .getWorkgroupTasks(let wid):
+            return ["workgroup":wid]
+        case .getWorkgroupFiles(let wid, let fid):
+            return ["workgroup":wid, "folder":fid]
         }
     }
     var parameterEncoding: ParameterEncoding {
         switch self {
         case .getAll, .deleteUser, .get:
             return URLEncoding.default// Send parameters in URL for GET, DELETE and HEAD. For other HTTP methods, parameters will be sent in request body
-        case .addUserAt, .getUserWorkgroups:
+        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
             return JSONEncoding.default
         }
     }
     var sampleData: Data {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
             return "{ \"name\": \"Harry Potter\"}".utf8Encoded
         }
     }
     var task: Task {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get,.getUserWorkgroups:
+        case .getAll, .addUserAt, .deleteUser, .get,.getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
             return .request
         }
     }
