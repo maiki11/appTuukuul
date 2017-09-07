@@ -22,8 +22,8 @@ struct User : Mappable {
     static let kBirthday = "birthday"
     static let kGender = "gender"
     static let kCellphone = "cellphone"
+    static let kInterests = "interests"
     
-    //static let kWorkgroupActive = "workgroup"
     
     var id: String?
     var name: String?
@@ -36,24 +36,31 @@ struct User : Mappable {
     var gender: String?
     var img: String?
     var cover: String?
-    //var workgroup = [Workgroup]()
+    var interests: [String] = []
+    
+    init(){
+    }
     
     init(map: Mapper) throws {
         try self.id = map.from("id")
-        try self.email = map.from(User.kEmail)
-        try self.name = map.from(User.kName)
-        try self.fullname = map.from(User.kFullName)
-        try self.lastname = map.from(User.kLastName)
-        try self.img = map.from(User.kImg)
-        try self.cover = map.from(User.kCover)
-        try self.occupation = map.from(User.kOccupation)
-        try self.birthday = map.from(User.kBirthday)
-        try self.gender = map.from(User.kGender)
-        try self.cellphone = map.from(User.kCellphone)
-        
-        //self.workgroup = map.optionalFrom(User.kWorkgroupActive) ?? []
+        self.email = map.optionalFrom(User.kEmail)
+        self.name = map.optionalFrom(User.kName)
+        self.fullname = map.optionalFrom(User.kFullName)
+        self.lastname = map.optionalFrom(User.kLastName)
+        self.img = map.optionalFrom(User.kImg)
+        self.cover = map.optionalFrom(User.kCover)
+        self.occupation = map.optionalFrom(User.kOccupation)
+        self.birthday = map.optionalFrom(User.kBirthday)
+        self.gender = map.optionalFrom(User.kGender)
+        self.cellphone = map.optionalFrom(User.kCellphone)
+        try self.interests = map.from(User.kInterests)
     }
-    init() {
+    
+    func toDictionary() -> NSDictionary {
+        return [User.kEmail: self.email ?? "",
+                User.kName: self.name ?? "",
+                User.kLastName: self.lastname ?? ""
+        ]
     }
     
 }
@@ -62,18 +69,14 @@ protocol UserBindible: AnyObject {
     var nameLbl: UILabel! {get}
     var emailLbl: UILabel! {get}
     var lastnameLbl: UILabel! {get}
-    var fullnameLbl: UILabel! {get}
-    var occupationLbl: UILabel! {get}
-    var birthdayLbl: UILabel! {get}
-    var cellphoneLbl: UILabel! {get}
-    var genderStr: String! {get}
-    var imgStr: String! {get}
-    var coverStr: String! {get}
+    //var interestsLbl: UILabel! {get}
     
 }
 extension UserBindible {
     var nameLbl: UILabel! {return nil}
     var emailLbl: UILabel! {return nil}
+    var lastnameLbl: UILabel! {return nil}
+    //var interestsLbl: UILabel! {return nil}
     
     func bind(user: User) -> Void {
         self.user = user
@@ -86,11 +89,14 @@ extension UserBindible {
         if let nameLbl = self.nameLbl {
             nameLbl.text = user.name
         }
-        if let nameLbl = self.nameLbl {
-            nameLbl.text = user.name
+        if let lastnameLbl = self.lastnameLbl {
+            lastnameLbl.text = user.lastname
         }
         if let emailLbl = self.emailLbl {
             emailLbl.text = user.email
         }
+        /*if let interestsLbl = self.interestsLbl {
+            interestsLbl.text = user.interests
+        }*/
     }
 }

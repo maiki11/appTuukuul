@@ -55,7 +55,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 extension ViewController : StoreSubscriber {
     typealias StoreSubscriberStateType = UserState
     override func viewWillAppear(_ animated: Bool) {
-        
         store.subscribe(self) {
             state in
             state.userState

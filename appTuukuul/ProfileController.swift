@@ -8,10 +8,9 @@
 
 import UIKit
 import ReSwift
-import Foundation
 
 class ProfileController: UIViewController{
-    
+    var user: User!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var coverImg: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -21,18 +20,30 @@ class ProfileController: UIViewController{
     @IBOutlet weak var articlesBtn: UIButton!
     @IBOutlet weak var viewBtn: UIView!
     @IBOutlet weak var dataInfo: UITableView!
-    let sections: [String] = ["Datos","Intereses"]
+    let sections: [String] = ["Datos","Intereses","Configuraciones"]
+    let imgSections: [UIImageView] = [UIImageView(image: #imageLiteral(resourceName: "user-3x-white")), UIImageView(image: #imageLiteral(resourceName: "tags")), UIImageView(image: #imageLiteral(resourceName: "settings"))]
     var personalData = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataInfo.delegate = self as? UITableViewDelegate
-        dataInfo.dataSource = self as? UITableViewDataSource
-        self.personalData.append(["email":store.state.userState.user.email!])
-        self.personalData.append(["birthday":store.state.userState.user.birthday!])
+        dataInfo.delegate = self
+        dataInfo.dataSource = self
+        user = store.state.userState.user
+        self.personalData.append(["email":user.email!])
+        self.personalData.append(["birthday":user.birthday!])
+        self.personalData.append(["gender":user.gender!])
+        self.personalData.append( ["occupation":user.occupation!])
+        self.personalData.append(["cellphone": user.cellphone!])
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.user = store.state.userState.user
+        //self.bind()
+        
+        store.subscribe(self){
+            state in
+            state.userState
+        }
         let navCon = navigationController
         navCon?.styleNavBar()
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1098039216, green: 0.137254902, blue: 0.1921568627, alpha: 1)
@@ -40,10 +51,6 @@ class ProfileController: UIViewController{
         self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : Any]
         self.navigationItem.title = "Perfil"
         self.usernameLbl.text = store.state.userState.user.fullname
-        //let url = URL(fileURLWithPath: store.state.userState.user.cover!)
-        //let data = try? Data(contentsOf: url)
-        //self.coverImg = UIImage(data: data!)
-        
         guard let coverURL = URL(string: Constants.ServerApi.filesurl+store.state.userState.user.cover!) else { return }
         guard let profileURL = URL(string: Constants.ServerApi.filesurl+store.state.userState.user.img!) else { return }
         self.loadImage(url: coverURL, context: self.coverImg)
@@ -81,10 +88,14 @@ class ProfileController: UIViewController{
         downloadPicTask.resume()
     }
     
-    
+    @IBAction func logout(_ sender: Any) {
+        store.dispatch(LogOutAction())
+    }
 }
 
 extension ProfileController: UITableViewDelegate, UITableViewDataSource{
+
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -93,52 +104,92 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource{
         if(section == 0){
             return self.personalData.count
         }
-        //if section == 1{
-            return 2
-        //}
+        if(section == 1){
+            if(user.interests.isEmpty == false){
+                return (user.interests.count)
+                
+            }else{
+                return 1
+            }
+            
+        }
+        if(section==2){
+            return 1
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let rect = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30)
+        let footerView = UIView(frame:rect)
+        footerView.backgroundColor = #colorLiteral(red: 0.08339247853, green: 0.1178589687, blue: 0.1773400605, alpha: 1)
+        let img = imgSections[section]
+        img.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
+        footerView.addSubview(img)
+        let title = UILabel()
+        title.text = sections[section]
+        title.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        title.frame = CGRect(x: 30, y: 5, width: tableView.frame.size.width - 20, height: 20)
+        footerView.addSubview(title)
+        return footerView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
     
-    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        }
-        let view = UIView()
-        view.tintColor = #colorLiteral(red: 0.08339247853, green: 0.1178589687, blue: 0.1773400605, alpha: 1)
-        view.backgroundColor = #colorLiteral(red: 0.08339247853, green: 0.1178589687, blue: 0.1773400605, alpha: 1)
-        let myCustomView = UIImageView(frame: CGRect(x: 5, y: 19, width: 40, height: 12))
-        myCustomView.image = #imageLiteral(resourceName: "bullet")
-        view.addSubview(myCustomView)
-        let lbl = UILabel()
-        lbl.text = sections[section]
-        lbl.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        lbl.frame = CGRect(x: 50, y: 16, width: Int(self.view.frame.width - 35), height: 20)
-        view.addSubview(lbl)
-        
-        return view
-    }*/
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PersonalDataTableViewCell
-        if(indexPath.section == 0) {
-            let info = self.personalData[indexPath.row]
-            for(k,v) in info{
-                cell.title.text = k
-                cell.data.text = v
-            }
-            
+        if(indexPath.section == 2){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellLogout")
+            return cell!
         }
-        
-        //cell.textLabel?.text = "Semana"
-        /*cell.detailTextLabel?.text = (Date(string:w.startDate, formatter: .yearMonthAndDay)?.string(with: .dayMonthAndYear3))! + " al " + (Date(string:w.endDate, formatter: .yearMonthAndDay)?.string(with: .dayMonthAndYear2))!
-         */
-        return cell
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PersonalDataTableViewCell
+            if(indexPath.section == 0) {
+                let info = self.personalData[indexPath.row]
+                for(k,v) in info{
+                    cell.title.text = k.uppercased()
+                    cell.data.text = v
+                }
+            }else{
+                if(user.interests.isEmpty==false){
+                    let info = self.user.interests[indexPath.row]
+                    cell.title.text = info.uppercased()
+                    cell.data.text = ""
+                }
+            }
+            return cell
+        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "infoSegue", sender:1)
+    }*/
+}
+
+extension ProfileController: StoreSubscriber{
+    typealias StoreSubscriberStateType = UserState
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        store.unsubscribe(self)
     }
+    
+    func newState(state: UserState) {
+        
+        switch state.status {
+        case .Finished(let s as String):
+            if s == "logout"{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "startView") as UIViewController
+                present(vc, animated: true, completion: nil)
+            }
+        default:
+            break
+        }
+    }
+    
 }

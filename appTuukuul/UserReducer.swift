@@ -72,7 +72,7 @@ struct UserReducer: Reducer {
                         //print("TOKEN:" ,token)
                         print(userJson)
                         let user  = User.from(userJson)
-                        //print(user)
+                        //print(user?.interests)
                         defaults.set(email, forKey: "email")
                         defaults.set(password, forKey: "password")
                         store.state.userState.user = user
