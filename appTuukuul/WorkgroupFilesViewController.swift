@@ -28,15 +28,17 @@ class WorkgroupFilesViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "filePreview" {
+            let vc = segue.destination as! FilePreviewViewController
+            vc.file = sender as! WorkgroupFile
+        }
     }
-    */
+    
 
 }
 
@@ -67,8 +69,7 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        print(self.files.count)
+        self.performSegue(withIdentifier: "filePreview", sender: self.files[indexPath.row])
     }
 }
 
