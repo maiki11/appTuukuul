@@ -47,6 +47,9 @@
 		8BDA6DA61F5A24D600FB0F6C /* WorkgroupTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */; };
 		8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */; };
 		9417D7901F60D0C400C073F2 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */; };
+		941AF9D01F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AF9CF1F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift */; };
+		941AF9D21F69A9D9001F3AE8 /* PostImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AF9D11F69A9D9001F3AE8 /* PostImgTableViewCell.swift */; };
+		941AF9D41F69F36B001F3AE8 /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AF9D31F69F36B001F3AE8 /* PostPreviewViewController.swift */; };
 		94690C121F69086400AA355F /* WorkgroupPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94690C111F69086400AA355F /* WorkgroupPost.swift */; };
 		94690C141F69111600AA355F /* PostMineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94690C131F69111600AA355F /* PostMineTableViewCell.swift */; };
 		94690C161F69112300AA355F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94690C151F69112300AA355F /* PostTableViewCell.swift */; };
@@ -119,6 +122,9 @@
 		8BDA6DA51F5A24D600FB0F6C /* WorkgroupTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupTasksViewController.swift; sourceTree = "<group>"; };
 		8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupChatViewController.swift; sourceTree = "<group>"; };
 		9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		941AF9CF1F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMineImgTableViewCell.swift; sourceTree = "<group>"; };
+		941AF9D11F69A9D9001F3AE8 /* PostImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImgTableViewCell.swift; sourceTree = "<group>"; };
+		941AF9D31F69F36B001F3AE8 /* PostPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
 		94690C111F69086400AA355F /* WorkgroupPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkgroupPost.swift; sourceTree = "<group>"; };
 		94690C131F69111600AA355F /* PostMineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMineTableViewCell.swift; sourceTree = "<group>"; };
 		94690C151F69112300AA355F /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +171,8 @@
 				8B90F0091F5E369600C27513 /* WFileCollectionViewCell.swift */,
 				94690C131F69111600AA355F /* PostMineTableViewCell.swift */,
 				94690C151F69112300AA355F /* PostTableViewCell.swift */,
+				941AF9CF1F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift */,
+				941AF9D11F69A9D9001F3AE8 /* PostImgTableViewCell.swift */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */,
 				8B7B7A6A1F60B17F009D51EE /* FilePreviewViewController.swift */,
 				9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */,
+				941AF9D31F69F36B001F3AE8 /* PostPreviewViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -550,10 +559,12 @@
 				8B6FE1641F578C800040DA17 /* WorkgroupsTableViewController.swift in Sources */,
 				846B1B831F483B8C00EA265D /* UserState.swift in Sources */,
 				94690C161F69112300AA355F /* PostTableViewCell.swift in Sources */,
+				941AF9D41F69F36B001F3AE8 /* PostPreviewViewController.swift in Sources */,
 				94B8AFF91F5BFFBA009400DA /* WTaskTableViewCell.swift in Sources */,
 				84F5FBF41F52A15500549E93 /* ProfileController.swift in Sources */,
 				8426A4B31F48426600E81BAB /* Constants.swift in Sources */,
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
+				941AF9D01F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift in Sources */,
 				94690C121F69086400AA355F /* WorkgroupPost.swift in Sources */,
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
 				846B1B911F48406000EA265D /* UserReducer.swift in Sources */,
@@ -577,6 +588,7 @@
 				846B1B851F483BA400EA265D /* WorkgroupState.swift in Sources */,
 				94690C141F69111600AA355F /* PostMineTableViewCell.swift in Sources */,
 				8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */,
+				941AF9D21F69A9D9001F3AE8 /* PostImgTableViewCell.swift in Sources */,
 				846B1B8A1F483C3600EA265D /* User.swift in Sources */,
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,

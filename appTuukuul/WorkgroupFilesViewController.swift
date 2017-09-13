@@ -69,7 +69,12 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "filePreview", sender: self.files[indexPath.row])
+        if self.files[indexPath.row].ext != nil{
+            self.performSegue(withIdentifier: "filePreview", sender: self.files[indexPath.row])
+        }else{
+            print("Carpeta")
+        }
+        
     }
 }
 

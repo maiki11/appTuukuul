@@ -215,65 +215,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-O9-WI4">
-                                <rect key="frame" x="0.0" y="130" width="375" height="537"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-O9-WI4">
+                                <rect key="frame" x="0.0" y="130" width="375" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postMine" id="vHV-Ev-WXb" customClass="PostMineTableViewCell" customModule="appTuukuul" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHV-Ev-WXb" id="Km7-r6-GOx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7y-hu-c0D">
-                                                    <rect key="frame" x="48" y="11" width="319" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label mucho texto alb para ver que oasaaaaaa" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7y-hu-c0D">
+                                                    <rect key="frame" x="48" y="11" width="319" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="M7y-hu-c0D" firstAttribute="top" secondItem="Km7-r6-GOx" secondAttribute="topMargin" constant="3" id="FAy-8u-Jp7"/>
+                                                <constraint firstItem="M7y-hu-c0D" firstAttribute="leading" secondItem="Km7-r6-GOx" secondAttribute="leadingMargin" constant="40" id="Mid-6r-Tn1"/>
+                                                <constraint firstItem="M7y-hu-c0D" firstAttribute="trailing" secondItem="Km7-r6-GOx" secondAttribute="trailingMargin" id="PSq-eY-sCH"/>
+                                                <constraint firstItem="M7y-hu-c0D" firstAttribute="bottom" secondItem="Km7-r6-GOx" secondAttribute="bottomMargin" id="T2B-8D-E4a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="M7y-hu-c0D" id="JdJ-EP-ksh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postMineImg" id="Hq2-9F-7ff">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postMineImg" rowHeight="150" id="Hq2-9F-7ff" customClass="PostMineImgTableViewCell" customModule="appTuukuul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hq2-9F-7ff" id="sw5-zs-JqT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="post" id="cAo-NI-I5q" customClass="PostTableViewCell" customModule="appTuukuul" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAo-NI-I5q" id="6Tv-rb-IPf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8n-Og-jRQ">
-                                                    <rect key="frame" x="8" y="11" width="324" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="7Sq-Xk-mlw">
+                                                    <rect key="frame" x="127" y="10" width="240" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgView" destination="7Sq-Xk-mlw" id="Hcq-Fn-NIq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="post" id="cAo-NI-I5q" customClass="PostTableViewCell" customModule="appTuukuul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="218" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAo-NI-I5q" id="6Tv-rb-IPf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8n-Og-jRQ">
+                                                    <rect key="frame" x="8" y="11" width="319" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="z8n-Og-jRQ" secondAttribute="bottom" id="H0W-WH-KHq"/>
+                                                <constraint firstItem="z8n-Og-jRQ" firstAttribute="top" secondItem="6Tv-rb-IPf" secondAttribute="topMargin" constant="3" id="VdB-Ei-Nus"/>
+                                                <constraint firstItem="z8n-Og-jRQ" firstAttribute="leading" secondItem="6Tv-rb-IPf" secondAttribute="leadingMargin" id="YvI-uM-4xd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="z8n-Og-jRQ" secondAttribute="trailing" constant="40" id="qby-Uf-rSZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="z8n-Og-jRQ" id="5TL-aY-mjm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImg" id="clM-yA-yPS">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImg" rowHeight="150" id="clM-yA-yPS" customClass="PostImgTableViewCell" customModule="appTuukuul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="258" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clM-yA-yPS" id="UYd-vQ-RXe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="kzB-Xf-OHb">
+                                                    <rect key="frame" x="8" y="10" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgView" destination="kzB-Xf-OHb" id="OhI-ya-hgz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -285,18 +313,37 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="UcY-O9-WI4" secondAttribute="trailing" id="4kv-Gd-QME"/>
-                            <constraint firstItem="dPn-d9-sN6" firstAttribute="top" secondItem="UcY-O9-WI4" secondAttribute="bottom" id="EWK-d0-Z26"/>
                             <constraint firstItem="UcY-O9-WI4" firstAttribute="leading" secondItem="01g-cU-t6C" secondAttribute="leading" id="Ggu-IK-z4u"/>
                             <constraint firstItem="UcY-O9-WI4" firstAttribute="top" secondItem="01g-cU-t6C" secondAttribute="top" constant="130" id="S2B-5b-uWT"/>
+                            <constraint firstItem="dPn-d9-sN6" firstAttribute="top" secondItem="UcY-O9-WI4" secondAttribute="bottom" constant="45" id="rAu-Rz-9DC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="UcY-O9-WI4" id="7qc-uC-vYZ"/>
+                        <segue destination="vFI-BT-ccq" kind="show" identifier="previewPost" id="Pgh-Ue-UOE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gf7-7k-UMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125.59999999999999" y="2783.658170914543"/>
+        </scene>
+        <!--Post Preview View Controller-->
+        <scene sceneID="tIW-Di-jEX">
+            <objects>
+                <viewController id="vFI-BT-ccq" customClass="PostPreviewViewController" customModule="appTuukuul" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rM4-pS-2Ry"/>
+                        <viewControllerLayoutGuide type="bottom" id="RxS-zr-elV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Veb-bf-FkW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pLT-mE-DSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125" y="3457"/>
         </scene>
         <!--Workgroup Files View Controller-->
         <scene sceneID="X6n-uO-fhn">
@@ -415,7 +462,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="36t-nP-L2w" id="Leq-Tn-Sy8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0lG-oy-cEJ">
@@ -797,5 +844,6 @@
         <image name="menu_usuarios" width="9" height="9"/>
         <image name="password" width="16" height="16"/>
         <image name="tuukuul-logo-wide-white" width="250" height="74"/>
+        <image name="video" width="16" height="16"/>
     </resources>
 </document>
