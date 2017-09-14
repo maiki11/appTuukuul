@@ -172,6 +172,7 @@
 				84F5FBF11F52861F00549E93 /* UINavigationController.swift */,
 				84F5FBF51F52B17A00549E93 /* UIView.swift */,
 				8B6FE1671F5791600040DA17 /* UIImage.swift */,
+				94690C171F6913E000AA355F /* String.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +205,7 @@
 				846B1B8B1F483C9F00EA265D /* Workgroup.swift */,
 				94B8AFFA1F5C0031009400DA /* WorkgroupTask.swift */,
 				8B90F0031F5E098300C27513 /* WorkgroupFile.swift */,
+				94690C111F69086400AA355F /* WorkgroupPost.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -302,6 +304,7 @@
 				8BDA6DA71F5A24E400FB0F6C /* WorkgroupChatViewController.swift */,
 				8B7B7A6A1F60B17F009D51EE /* FilePreviewViewController.swift */,
 				9417D78F1F60D0C400C073F2 /* TaskDetailsViewController.swift */,
+				941AF9D31F69F36B001F3AE8 /* PostPreviewViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -548,6 +551,8 @@
 				84033D1E1F592C7F004624CC /* PersonalDataTableViewCell.swift in Sources */,
 				842788031F57951A002CB06D /* InterestsTableViewCell.swift in Sources */,
 				8426A4B71F497A2A00E81BAB /* ReportActions.swift in Sources */,
+				941AF9D01F69A9CE001F3AE8 /* PostMineImgTableViewCell.swift in Sources */,
+				94690C121F69086400AA355F /* WorkgroupPost.swift in Sources */,
 				8426A4B51F4977F000E81BAB /* WorkgroupActions.swift in Sources */,
 				846B1B911F48406000EA265D /* UserReducer.swift in Sources */,
 				8BDA6DA81F5A24E400FB0F6C /* WorkgroupChatViewController.swift in Sources */,
@@ -563,12 +568,15 @@
 				846B1B8C1F483C9F00EA265D /* Workgroup.swift in Sources */,
 				94B8AFFB1F5C0031009400DA /* WorkgroupTask.swift in Sources */,
 				846B1B961F48413600EA265D /* WorkgroupReducer.swift in Sources */,
+				94690C181F6913E000AA355F /* String.swift in Sources */,
 				846B1B811F483B5D00EA265D /* AppState.swift in Sources */,
 				846B1B941F4840A500EA265D /* UserService.swift in Sources */,
 				9417D7901F60D0C400C073F2 /* TaskDetailsViewController.swift in Sources */,
 				846B1B871F483BB400EA265D /* ChatState.swift in Sources */,
 				846B1B851F483BA400EA265D /* WorkgroupState.swift in Sources */,
+				94690C141F69111600AA355F /* PostMineTableViewCell.swift in Sources */,
 				8BDA6DA21F5A20A400FB0F6C /* WorkgroupDetailsViewController.swift in Sources */,
+				941AF9D21F69A9D9001F3AE8 /* PostImgTableViewCell.swift in Sources */,
 				846B1B8A1F483C3600EA265D /* User.swift in Sources */,
 				84B984051F4812DD00E7F337 /* ViewController.swift in Sources */,
 				846B1B981F4841D400EA265D /* AuthService.swift in Sources */,

@@ -16,7 +16,8 @@ enum WorkgroupService {
     deleteUser(eid: Int, uid: Int),
     getUserWorkgroups(uid:String),
     getWorkgroupTasks(wid:String),
-    getWorkgroupFiles(wid:String, fid:String)
+    getWorkgroupFiles(wid:String, fid:String),
+    getWorkgroupPosts(wid:String)
     
 }
 extension WorkgroupService: TargetType, AccessTokenAuthorizable {
@@ -35,8 +36,10 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
             return "/getWorkgroups"
         case .getWorkgroupTasks:
             return "/getWorkgroupTasks"
-        case .getWorkgroupFiles(let wid, let fid):
+        case .getWorkgroupFiles:
             return "/getWorkgroupFiles"
+        case .getWorkgroupPosts:
+            return "/getWorkgroupPosts"
         }
         
     }
@@ -44,7 +47,7 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
         switch self {
         case .getAll, .get:
             return .get
-        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
+        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles, .getWorkgroupPosts:
             return .post
         case .deleteUser:
             return .delete
@@ -52,7 +55,7 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
     }
     var shouldAuthorize: Bool {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles, .getWorkgroupPosts:
             return true
         }
     }
@@ -69,25 +72,27 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
             return ["workgroup":wid]
         case .getWorkgroupFiles(let wid, let fid):
             return ["workgroup":wid, "folder":fid]
+        case .getWorkgroupPosts(let wid):
+            return ["workgroup":wid]
         }
     }
     var parameterEncoding: ParameterEncoding {
         switch self {
         case .getAll, .deleteUser, .get:
             return URLEncoding.default// Send parameters in URL for GET, DELETE and HEAD. For other HTTP methods, parameters will be sent in request body
-        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
+        case .addUserAt, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles, .getWorkgroupPosts:
             return JSONEncoding.default
         }
     }
     var sampleData: Data {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
+        case .getAll, .addUserAt, .deleteUser, .get, .getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles, .getWorkgroupPosts:
             return "{ \"name\": \"Harry Potter\"}".utf8Encoded
         }
     }
     var task: Task {
         switch self {
-        case .getAll, .addUserAt, .deleteUser, .get,.getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles:
+        case .getAll, .addUserAt, .deleteUser, .get,.getUserWorkgroups, .getWorkgroupTasks, .getWorkgroupFiles, .getWorkgroupPosts:
             return .request
         }
     }

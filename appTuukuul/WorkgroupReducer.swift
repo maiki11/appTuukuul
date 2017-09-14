@@ -14,7 +14,7 @@ let workgroupProvider = MoyaProvider<WorkgroupService>(plugins: [authPlugin])
 
 struct WorkgroupReducer: Reducer {
     func handleAction(action: Action, state: WorkgroupState?) -> WorkgroupState {
-        var state = state ?? WorkgroupState(workgroups: [], workgroup:nil, status: .none, tasks: [], files: [])
+        var state = state ?? WorkgroupState(workgroups: [], workgroup:nil, status: .none, tasks: [], files: [], posts: [])
         switch action {
         case let action as GetUserWorkgroupsAction:
             if action.uid != "" {
@@ -44,11 +44,19 @@ struct WorkgroupReducer: Reducer {
                 state.status = .loading
                 getWorkgroupTasks(wid: action.wid)
             }
+            break
         case let action as GetWorkgroupFilesAction:
             if action.wid != nil && action.fid != nil{
                 state.status = .loading
                 getWorkgroupFiles(wid: action.wid, fid: action.fid)
             }
+            break
+        case let action as GetWorkgroupPostsAction:
+            if action.wid != nil{
+                state.status = .loading
+                getWorkgroupPosts(wid: action.wid)
+            }
+            break
         default:
             break
         }
@@ -112,13 +120,38 @@ struct WorkgroupReducer: Reducer {
             case .success(let response):
                 do{
                     let rep: NSDictionary = try response.mapJSON() as! NSDictionary
-                    let data: NSDictionary = try rep.value(forKey: "Datos") as! NSDictionary
+                    let data: NSDictionary = rep.value(forKey: "Datos") as! NSDictionary
                     let folders:NSArray = data.value(forKey: "Folders") as! NSArray
                     let files:NSArray = data.value(forKey: "Files") as! NSArray
                     let wFolders = WorkgroupFile.from(folders) ?? []
                     let wFiles = WorkgroupFile.from(files) ?? []
                     
                     store.state.workgroupState.files = wFolders + wFiles
+                    store.state.workgroupState.status = .finished
+                    
+                } catch MoyaError.jsonMapping(let error){
+                    print("error: \(error)")
+                } catch {
+                    print("error")
+                }
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        })
+    }
+    
+    func getWorkgroupPosts(wid:String) -> Void{
+        workgroupProvider.request(.getWorkgroupPosts(wid: wid), completion: {result in
+            switch(result){
+            case .success(let response):
+                do{
+                    let rep: NSDictionary = try response.mapJSON() as! NSDictionary
+                    let data: NSArray = rep.value(forKey: "Datos") as! NSArray
+                    let posts = WorkgroupPost.from(data) ?? []
+                    
+                    store.state.workgroupState.posts = posts
                     store.state.workgroupState.status = .finished
                     
                 } catch MoyaError.jsonMapping(let error){

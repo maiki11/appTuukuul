@@ -107,4 +107,17 @@ struct GetWorkgroupFilesAction: StandardActionConvertible {
     }
 }
 
+struct GetWorkgroupPostsAction: StandardActionConvertible {
+    static let type = "GET_WORKGROUP_POST_ACTION"
+    var wid:String!
+    init(wid:String){
+        self.wid = wid;
+    }
+    init(_ standarAction: StandardAction){}
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: GetWorkgroupPostsAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
 
