@@ -184,7 +184,7 @@ extension ProfileController: StoreSubscriber{
         case .Finished(let s as String):
             if s == "logout"{
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "startView") as UIViewController
+                let vc = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
                 present(vc, animated: true, completion: nil)
             }
         default:
