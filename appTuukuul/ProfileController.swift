@@ -21,11 +21,15 @@ class ProfileController: UIViewController{
     @IBOutlet weak var articlesBtn: UIButton!
     @IBOutlet weak var viewBtn: UIView!
     @IBOutlet weak var dataInfo: UITableView!
+    let sections: [String] = ["Datos","Intereses"]
+    var personalData = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataInfo.delegate = self as? UITableViewDelegate
         dataInfo.dataSource = self as? UITableViewDataSource
+        self.personalData.append(["email":store.state.userState.user.email!])
+        self.personalData.append(["birthday":store.state.userState.user.birthday!])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,35 +81,64 @@ class ProfileController: UIViewController{
         downloadPicTask.resume()
     }
     
+    
+}
+
+extension ProfileController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if(section == 0){
+            return self.personalData.count
+        }
+        //if section == 1{
+            return 2
+        //}
     }
     
-    func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String!{
-        if (section == 0){
-            return "Datos"
-        }
-        if (section == 1){
-            return "Intereses"
-        }
-        return " "
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
+    
+    /*func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
+        let view = UIView()
+        view.tintColor = #colorLiteral(red: 0.08339247853, green: 0.1178589687, blue: 0.1773400605, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.08339247853, green: 0.1178589687, blue: 0.1773400605, alpha: 1)
+        let myCustomView = UIImageView(frame: CGRect(x: 5, y: 19, width: 40, height: 12))
+        myCustomView.image = #imageLiteral(resourceName: "bullet")
+        view.addSubview(myCustomView)
+        let lbl = UILabel()
+        lbl.text = sections[section]
+        lbl.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        lbl.frame = CGRect(x: 50, y: 16, width: Int(self.view.frame.width - 35), height: 20)
+        view.addSubview(lbl)
+        
+        return view
+    }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //let w = weeks[indexPath.row]
-        cell.textLabel?.text = "Semana"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PersonalDataTableViewCell
+        if(indexPath.section == 0) {
+            let info = self.personalData[indexPath.row]
+            for(k,v) in info{
+                cell.title.text = k
+                cell.data.text = v
+            }
+            
+        }
+        
+        //cell.textLabel?.text = "Semana"
         /*cell.detailTextLabel?.text = (Date(string:w.startDate, formatter: .yearMonthAndDay)?.string(with: .dayMonthAndYear3))! + " al " + (Date(string:w.endDate, formatter: .yearMonthAndDay)?.string(with: .dayMonthAndYear2))!
-        */
+         */
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "infoSegue", sender:1)
     }
-    
 }
