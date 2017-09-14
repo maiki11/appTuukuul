@@ -216,7 +216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-O9-WI4">
-                                <rect key="frame" x="0.0" y="130" width="375" height="492"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="493"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postMine" id="vHV-Ev-WXb" customClass="PostMineTableViewCell" customModule="appTuukuul" customModuleProvider="target">
@@ -315,7 +315,7 @@
                             <constraint firstAttribute="trailing" secondItem="UcY-O9-WI4" secondAttribute="trailing" id="4kv-Gd-QME"/>
                             <constraint firstItem="UcY-O9-WI4" firstAttribute="leading" secondItem="01g-cU-t6C" secondAttribute="leading" id="Ggu-IK-z4u"/>
                             <constraint firstItem="UcY-O9-WI4" firstAttribute="top" secondItem="01g-cU-t6C" secondAttribute="top" constant="130" id="S2B-5b-uWT"/>
-                            <constraint firstItem="dPn-d9-sN6" firstAttribute="top" secondItem="UcY-O9-WI4" secondAttribute="bottom" constant="45" id="rAu-Rz-9DC"/>
+                            <constraint firstItem="dPn-d9-sN6" firstAttribute="top" secondItem="UcY-O9-WI4" secondAttribute="bottom" constant="44" id="rAu-Rz-9DC"/>
                         </constraints>
                     </view>
                     <connections>

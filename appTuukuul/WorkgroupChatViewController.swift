@@ -65,9 +65,9 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "postMineImg", for: indexPath) as! PostMineImgTableViewCell
                 if post.fileType != "video" {
                     cell.imgView.loadImage(urlString:Constants.ServerApi.filesurl+post.post!)
+                }else{
+                    cell.imgView.image = #imageLiteral(resourceName: "video")
                 }
-                print(cell.imgView.frame.height)
-                print(cell.frame.height)
                 cell.layoutIfNeeded()
                 return cell
             }else{
@@ -89,9 +89,9 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "postImg", for: indexPath) as! PostImgTableViewCell
                 if post.fileType != "video" {
                     cell.imgView.loadImage(urlString:Constants.ServerApi.filesurl+post.post!)
+                }else{
+                    cell.imgView.image = #imageLiteral(resourceName: "video")
                 }
-                print(cell.imgView.frame.height)
-                print(cell.frame.height)
                 cell.layoutIfNeeded()
                 return cell
             }else{
