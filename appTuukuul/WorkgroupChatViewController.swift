@@ -69,6 +69,8 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                     cell.imgView.image = #imageLiteral(resourceName: "video")
                 }
                 cell.layoutIfNeeded()
+                cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
+                cell.userImg.circleImage()
                 return cell
             }else{
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "postMine", for: indexPath) as! PostMineTableViewCell
@@ -81,6 +83,8 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                     cell.contentLabel.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                     cell.sizeToFit()
                 }
+                cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
+                cell.userImg.circleImage()
                 return cell
             }
         }else{
@@ -93,6 +97,8 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                     cell.imgView.image = #imageLiteral(resourceName: "video")
                 }
                 cell.layoutIfNeeded()
+                cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
+                cell.userImg.circleImage()
                 return cell
             }else{
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! PostTableViewCell
@@ -105,6 +111,8 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                     cell.contentLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     cell.sizeToFit()
                 }
+                cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
+                cell.userImg.circleImage()
                 return cell
             }
         }

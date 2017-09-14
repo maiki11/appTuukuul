@@ -10,6 +10,7 @@ import UIKit
 
 class PostMineTableViewCell: UITableViewCell {
 
+    @IBOutlet var userImg: UIImageView!
     @IBOutlet var contentLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
