@@ -14,4 +14,5 @@ struct WorkgroupState: StateType {
     var status: Result<Any>
     var tasks = [WorkgroupTask]()
     var files = [WorkgroupFile]()
+    var posts = [WorkgroupPost]()
 }

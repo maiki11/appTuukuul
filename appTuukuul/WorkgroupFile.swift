@@ -15,12 +15,14 @@ struct WorkgroupFile : Mappable {
     static let kName = "name"
     static let kExt = "ext"
     static let kSize = "size"
+    static let kPath = "path"
     static let kShared = "shared"
     
     var id: String?
     var name: String?
     var ext: String?
     var size: String?
+    var path: String?
     var shared: String?
     
     init(map: Mapper) throws {
@@ -28,6 +30,7 @@ struct WorkgroupFile : Mappable {
         self.ext = map.optionalFrom(WorkgroupFile.kExt)
         self.name = map.optionalFrom(WorkgroupFile.kName)
         self.size = map.optionalFrom(WorkgroupFile.kSize)
+        self.path = map.optionalFrom(WorkgroupFile.kPath)
         self.shared = map.optionalFrom(WorkgroupFile.kShared)
     }
     init() {
