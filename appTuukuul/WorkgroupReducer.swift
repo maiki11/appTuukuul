@@ -125,8 +125,9 @@ struct WorkgroupReducer: Reducer {
                     let files:NSArray = data.value(forKey: "Files") as! NSArray
                     let wFolders = WorkgroupFile.from(folders) ?? []
                     let wFiles = WorkgroupFile.from(files) ?? []
-                    
-                    store.state.workgroupState.files = wFolders + wFiles
+                    var wBackFolder = [WorkgroupFile()]
+                    wBackFolder[0].name = ".."
+                    store.state.workgroupState.files = wBackFolder + wFolders + wFiles
                     store.state.workgroupState.status = .finished
                     
                 } catch MoyaError.jsonMapping(let error){

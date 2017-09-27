@@ -12,11 +12,16 @@ import XLPagerTabStrip
 
 class WorkgroupFilesViewController: UIViewController {
 
+    @IBOutlet var searchBarFiles: UISearchBar!
     @IBOutlet weak var filesCollectionView: UICollectionView!
     var files:[WorkgroupFile] = []
+    var tree:[String] = ["/"]
+    var treeIDs:[String] = ["0"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         
 
         // Do any additional setup after loading the view.
@@ -72,7 +77,20 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
         if self.files[indexPath.row].ext != nil{
             self.performSegue(withIdentifier: "filePreview", sender: self.files[indexPath.row])
         }else{
-            print("Carpeta")
+            if self.files[indexPath.row].name! == ".."{
+                if self.tree.count > 1{
+                    self.tree.popLast()
+                    self.treeIDs.popLast()
+                    let id = self.treeIDs[self.treeIDs.count-1]
+                    store.dispatch(GetWorkgroupFilesAction(wid: store.state.workgroupState.workgroup.id!, fid: id))
+                }
+            }else{
+                self.tree.append(self.files[indexPath.row].name!)
+                self.treeIDs.append(self.files[indexPath.row].id!)
+                print(self.tree)
+                store.dispatch(GetWorkgroupFilesAction(wid: store.state.workgroupState.workgroup.id!, fid: self.files[indexPath.row].id!))
+            }
+            
         }
         
     }
@@ -114,5 +132,38 @@ extension WorkgroupFilesViewController: StoreSubscriber {
     
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
+    }
+}
+
+extension WorkgroupFilesViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(!(searchBar.text?.isEmpty)!){
+            //reload your data source if necessary
+            files = files.filter({($0.name?.lowercased().contains(searchBar.text!.lowercased()))!})
+            filesCollectionView.reloadData()
+        }else{
+            files = store.state.workgroupState.files
+            filesCollectionView.reloadData()
+        }
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchText.isEmpty){
+            //reload your data source if necessary
+            files = store.state.workgroupState.files
+            print(files.count)
+            filesCollectionView.reloadData()
+        }else{
+            files = files.filter({($0.name?.lowercased().contains(searchBar.text!.lowercased()))!})
+            filesCollectionView.reloadData()
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        files = store.state.workgroupState.files
+        filesCollectionView.reloadData()
     }
 }
