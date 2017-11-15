@@ -15,7 +15,8 @@ let workgroupActionTypeMap: TypeMap = [GetWorkgroupAction.type: GetWorkgroupActi
                                        AddUserWorkgroupAction.type :  AddUserWorkgroupAction.self,
                                        DeleteUserWorkgroupAction.type : DeleteUserWorkgroupAction.self,
                                        GetWorkgroupTasksAction.type: GetWorkgroupTasksAction.self,
-                                       GetWorkgroupFilesAction.type: GetWorkgroupFilesAction.self]
+                                       GetWorkgroupFilesAction.type: GetWorkgroupFilesAction.self,
+                                       GetWorkgroupPostsAction.type: GetWorkgroupPostsAction.self]
 
 struct GetWorkgroupAction: StandardActionConvertible {
     static let type = "GET_WORKGROUP_ACTION"
@@ -110,8 +111,10 @@ struct GetWorkgroupFilesAction: StandardActionConvertible {
 struct GetWorkgroupPostsAction: StandardActionConvertible {
     static let type = "GET_WORKGROUP_POST_ACTION"
     var wid:String!
-    init(wid:String){
+    var offset:Int!
+    init(wid:String, offset: Int){
         self.wid = wid;
+        self.offset = offset
     }
     init(_ standarAction: StandardAction){}
     

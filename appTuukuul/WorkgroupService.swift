@@ -17,7 +17,7 @@ enum WorkgroupService {
     getUserWorkgroups(uid:String),
     getWorkgroupTasks(wid:String),
     getWorkgroupFiles(wid:String, fid:String),
-    getWorkgroupPosts(wid:String)
+    getWorkgroupPosts(wid:String, offset:Int)
     
 }
 extension WorkgroupService: TargetType, AccessTokenAuthorizable {
@@ -72,8 +72,8 @@ extension WorkgroupService: TargetType, AccessTokenAuthorizable {
             return ["workgroup":wid]
         case .getWorkgroupFiles(let wid, let fid):
             return ["workgroup":wid, "folder":fid]
-        case .getWorkgroupPosts(let wid):
-            return ["workgroup":wid]
+        case .getWorkgroupPosts(let wid, let offset):
+            return ["workgroup":wid, "offset": offset]
         }
     }
     var parameterEncoding: ParameterEncoding {

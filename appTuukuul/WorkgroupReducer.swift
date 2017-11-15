@@ -52,9 +52,9 @@ struct WorkgroupReducer: Reducer {
             }
             break
         case let action as GetWorkgroupPostsAction:
-            if action.wid != nil{
+            if action.wid != nil && action.offset != nil{
                 state.status = .loading
-                getWorkgroupPosts(wid: action.wid)
+                getWorkgroupPosts(wid: action.wid, offset: action.offset)
             }
             break
         default:
@@ -77,7 +77,6 @@ struct WorkgroupReducer: Reducer {
                 } catch MoyaError.jsonMapping(let error){
                     print("Error \(error)")
                 } catch {
-                    print("sabe")
                 }
                 break
             case .failure(let error):
@@ -125,8 +124,9 @@ struct WorkgroupReducer: Reducer {
                     let files:NSArray = data.value(forKey: "Files") as! NSArray
                     let wFolders = WorkgroupFile.from(folders) ?? []
                     let wFiles = WorkgroupFile.from(files) ?? []
-                    
-                    store.state.workgroupState.files = wFolders + wFiles
+                    var wBackFolder = [WorkgroupFile()]
+                    wBackFolder[0].name = ".."
+                    store.state.workgroupState.files = wBackFolder + wFolders + wFiles
                     store.state.workgroupState.status = .finished
                     
                 } catch MoyaError.jsonMapping(let error){
@@ -142,17 +142,22 @@ struct WorkgroupReducer: Reducer {
         })
     }
     
-    func getWorkgroupPosts(wid:String) -> Void{
-        workgroupProvider.request(.getWorkgroupPosts(wid: wid), completion: {result in
+    func getWorkgroupPosts(wid:String, offset:Int) -> Void{
+        workgroupProvider.request(.getWorkgroupPosts(wid: wid, offset: offset), completion: {result in
             switch(result){
             case .success(let response):
                 do{
                     let rep: NSDictionary = try response.mapJSON() as! NSDictionary
-                    let data: NSArray = rep.value(forKey: "Datos") as! NSArray
-                    let posts = WorkgroupPost.from(data) ?? []
-                    
-                    store.state.workgroupState.posts = posts
-                    store.state.workgroupState.status = .finished
+                    let estado: Int = rep.value(forKey: "Estado") as! Int
+                    if(estado==1){
+                        let data: NSArray = rep.value(forKey: "Datos") as! NSArray
+                        let posts = WorkgroupPost.from(data) ?? []
+                        
+                        posts.forEach({ (w) in
+                            store.state.workgroupState.posts.insert(w, at: 0)
+                        })
+                        store.state.workgroupState.status = .finished
+                    }
                     
                 } catch MoyaError.jsonMapping(let error){
                     print("error: \(error)")

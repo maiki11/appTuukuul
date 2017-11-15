@@ -34,7 +34,6 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
         }
     }
     var parameters: [String: Any]? {
-        print(baseURL)
         switch self {
         case .login(let username, let password):
             let data = ["username": username,

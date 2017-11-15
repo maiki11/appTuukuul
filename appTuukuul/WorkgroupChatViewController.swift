@@ -15,9 +15,9 @@ class WorkgroupChatViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var posts:[WorkgroupPost] = []
     var user:User = store.state.userState.user!
+    var offset = 0;
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,11 +25,6 @@ class WorkgroupChatViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "previewPost" {
             let vc = segue.destination as! PostPreviewViewController
@@ -77,11 +72,9 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
                 if let content = post.post?.base64Decoded() {
                     let newString = content.replacingOccurrences(of: "<br />", with: "\n", options: .literal, range: nil)
                     cell.contentLabel.text = newString
-                    
-                    cell.contentLabel.sizeToFit()
-                    cell.contentLabel.frame = CGRect(x: cell.contentLabel.frame.origin.x, y: cell.contentLabel.frame.origin.y, width: cell.contentLabel.frame.width, height: cell.contentLabel.frame.height)
-                    cell.contentLabel.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-                    cell.sizeToFit()
+                    cell.contentLabel.layer.cornerRadius = 5
+                    cell.contentLabel.layer.masksToBounds = true
+                    cell.contentLabel.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.8823529412, blue: 0.8980392157, alpha: 1)
                 }
                 cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
                 cell.userImg.circleImage()
@@ -103,23 +96,18 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
             }else{
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! PostTableViewCell
                 if let content = post.post?.base64Decoded() {
-                    let newString = content.replacingOccurrences(of: "<br />", with: "\n", options: .literal, range: nil)
-                    cell.contentLabel.text = newString
-                    
-                    cell.contentLabel.sizeToFit()
-                    cell.contentLabel.frame = CGRect(x: cell.contentLabel.frame.origin.x, y: cell.contentLabel.frame.origin.y, width: cell.contentLabel.frame.width, height: cell.contentLabel.frame.height)
-                    cell.contentLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                    cell.sizeToFit()
+                    cell.contentLabel.text = content
                 }
+                cell.contentLabel.sizeToFit()
+                cell.contentLabel.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.6274509804, blue: 0.7411764706, alpha: 1)
+                cell.contentLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                cell.contentLabel.layer.cornerRadius = 5
+                cell.contentLabel.layer.masksToBounds = true
                 cell.userImg.loadImage(urlString: Constants.ServerApi.filesurl+post.img!)
                 cell.userImg.circleImage()
                 return cell
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -129,34 +117,56 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
         return UITableViewAutomaticDimension
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = self.posts[indexPath.row]
         if post.fileType == "image" || post.fileType == "video" {
-            print(post.post!)
             self.performSegue(withIdentifier: "previewPost", sender: nil)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        tableView.scrollsToTop = true
     }
 }
 
 extension WorkgroupChatViewController: StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        store.dispatch(GetWorkgroupPostsAction(wid: store.state.workgroupState.workgroup.id!))
+        getPostsData()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        store.unsubscribe(self)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y <= 0){
+            self.offset+=20
+            getPostsData()
+        }
+    }
+    
+    func getPostsData(){
+        store.dispatch(GetWorkgroupPostsAction(wid: store.state.workgroupState.workgroup.id!,offset: self.offset))
         store.subscribe(self) {
             state in
             state.workgroupState
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        store.unsubscribe(self)
-    }
-    
     func newState(state: WorkgroupState) {
-        self.posts = store.state.workgroupState.posts
-        self.tableView.reloadData()
+        switch state.status {
+        case .finished:
+            self.posts = state.posts
+            self.tableView.reloadData()
+            break
+        default:
+            break
+        }
     }
-    
 }
 

@@ -69,10 +69,7 @@ struct UserReducer: Reducer {
                     //token = t
                     //authPlugin = AccessTokenPlugin(token: token)
                     if let userJson = repos.value(forKey: "Datos") as? NSDictionary {
-                        //print("TOKEN:" ,token)
-                        print(userJson)
                         let user  = User.from(userJson)
-                        //print(user?.interests)
                         defaults.set(email, forKey: "email")
                         defaults.set(password, forKey: "password")
                         store.state.userState.user = user
@@ -85,7 +82,6 @@ struct UserReducer: Reducer {
                     print(error )
                     store.state.userState.status = .Failed("Email/Contraseña incorrecta!!")
                 } catch {
-                    print(":(")
                 }
                 break
             case .failure(let error):
@@ -103,7 +99,6 @@ struct UserReducer: Reducer {
             case .success(let response):
                 do {
                      let repos : NSDictionary = try response.mapJSON() as! NSDictionary
-                    print(repos)
                     if response.statusCode == 200 {
                         defaults.set(new, forKey: "password")
                         store.state.userState.status = .finished
@@ -119,7 +114,6 @@ struct UserReducer: Reducer {
                     print(error )
                     store.state.userState.status = .Failed("Hubo algun error")
                 } catch {
-                    print(":(")
                 }
                 break
             case .failure(let error):
@@ -137,11 +131,9 @@ struct UserReducer: Reducer {
                 case .success(let response):
                     do {
                         let repos = try response.mapJSON() as! User
-                        print(repos)
                     } catch MoyaError.jsonMapping(let error) {
                         print(error )
                     } catch {
-                        print(":(")
                     }
                 break
             case .failure(let error):
@@ -164,7 +156,6 @@ struct UserReducer: Reducer {
                 } catch MoyaError.jsonMapping(let error) {
                     print(error )
                 } catch {
-                    print(":(")
                 }
                 break
             case .failure(let error):

@@ -12,11 +12,16 @@ import XLPagerTabStrip
 
 class WorkgroupFilesViewController: UIViewController {
 
+    @IBOutlet var searchBarFiles: UISearchBar!
     @IBOutlet weak var filesCollectionView: UICollectionView!
     var files:[WorkgroupFile] = []
+    var tree:[String] = ["/"]
+    var treeIDs:[String] = ["0"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         
 
         // Do any additional setup after loading the view.
@@ -54,7 +59,6 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.files.count)
         return self.files.count
     }
     
@@ -63,7 +67,17 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
         let file = self.files[indexPath.row]
         
         cell.fileNameLbl.text = file.name!
-        cell.fileImgView.image = (file.ext == nil ? #imageLiteral(resourceName: "folder") : #imageLiteral(resourceName: "file"))
+        /*switch(file.ext){
+            
+        case "img"?:
+            cell.fileImgView.image = #imageLiteral(resourceName: "img_icon")
+        case "doc"?:
+            cell.fileImgView.image = #imageLiteral(resourceName: "file-1")
+        case .none: break
+        case .some(_):
+            cell.fileImgView.image = #imageLiteral(resourceName: "folder-1")
+        }*/
+        cell.fileImgView.image = (file.ext == nil ? #imageLiteral(resourceName: "folder-1") : #imageLiteral(resourceName: "file-1"))
         
         return cell
     }
@@ -72,7 +86,19 @@ extension WorkgroupFilesViewController: UICollectionViewDelegate, UICollectionVi
         if self.files[indexPath.row].ext != nil{
             self.performSegue(withIdentifier: "filePreview", sender: self.files[indexPath.row])
         }else{
-            print("Carpeta")
+            if self.files[indexPath.row].name! == ".."{
+                if self.tree.count > 1{
+                    self.tree.popLast()
+                    self.treeIDs.popLast()
+                    let id = self.treeIDs[self.treeIDs.count-1]
+                    store.dispatch(GetWorkgroupFilesAction(wid: store.state.workgroupState.workgroup.id!, fid: id))
+                }
+            }else{
+                self.tree.append(self.files[indexPath.row].name!)
+                self.treeIDs.append(self.files[indexPath.row].id!)
+                store.dispatch(GetWorkgroupFilesAction(wid: store.state.workgroupState.workgroup.id!, fid: self.files[indexPath.row].id!))
+            }
+            
         }
         
     }
@@ -89,7 +115,6 @@ extension WorkgroupFilesViewController: StoreSubscriber {
             break
         case .finished:
 //            self.view.hideToastActivity()
-            print("finished")
             self.filesCollectionView.reloadData()
             break
         case .none:
@@ -114,5 +139,37 @@ extension WorkgroupFilesViewController: StoreSubscriber {
     
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
+    }
+}
+
+extension WorkgroupFilesViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(!(searchBar.text?.isEmpty)!){
+            //reload your data source if necessary
+            files = files.filter({($0.name?.lowercased().contains(searchBar.text!.lowercased()))!})
+            filesCollectionView.reloadData()
+        }else{
+            files = store.state.workgroupState.files
+            filesCollectionView.reloadData()
+        }
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchText.isEmpty){
+            //reload your data source if necessary
+            files = store.state.workgroupState.files
+            filesCollectionView.reloadData()
+        }else{
+            files = files.filter({($0.name?.lowercased().contains(searchBar.text!.lowercased()))!})
+            filesCollectionView.reloadData()
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        files = store.state.workgroupState.files
+        filesCollectionView.reloadData()
     }
 }

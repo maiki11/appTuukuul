@@ -75,16 +75,13 @@ extension WorkgroupTasksViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let terminateAction = UITableViewRowAction(style: .normal, title: "Terminar") { (action, indexPath) in
             let task = self.tasks[indexPath.row]
-            print(task.name!)
         }
         let editAction = UITableViewRowAction(style: .normal, title: "Editar") { (action, indexPath) in
             let task = self.tasks[indexPath.row]
-            print(task.description!)
         }
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Eliminar") { (action, indexPath) in
             let task = self.tasks[indexPath.row]
-            print(task.id!)
         }
         return [deleteAction, editAction, terminateAction]
         

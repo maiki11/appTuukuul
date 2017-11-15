@@ -81,4 +81,13 @@ extension UIView {
         self.layer.addSublayer(border)
     }
     
+    func allBordersWithColor(color:UIColor, width: CGFloat){
+        addTopBorderWithColor(color: color, width: width)
+        addBottomBorderWithColor(color: color, width: width)
+        addLeftBorderWithColor(color: color, width: width)
+        addRightBorderWithColor(color: color, width: width)
+    }
+    
+    
+    
 }

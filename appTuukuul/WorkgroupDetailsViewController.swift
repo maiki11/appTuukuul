@@ -32,10 +32,7 @@ class WorkgroupDetailsViewController: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = .black
             newCell?.label.textColor = .red
         }
-//        containerView.isScrollEnabled = false
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        print(workgroup)
         
         self.navigationItem.title = workgroup.name
     }
@@ -49,7 +46,7 @@ class WorkgroupDetailsViewController: ButtonBarPagerTabStripViewController {
         let files = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wFile")
         let chat = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wChat")
         let tasks = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wTask")
-        return [files, chat, tasks]
+        return [chat, files, tasks]
     }
     
 
