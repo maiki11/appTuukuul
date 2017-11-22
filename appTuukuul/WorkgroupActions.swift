@@ -123,4 +123,21 @@ struct GetWorkgroupPostsAction: StandardActionConvertible {
     }
 }
 
+struct CreatePostAction: StandardActionConvertible {
+    static let type = "CREATE_POST_ACTION"
+    var uid: String!
+    var wid: String!
+    var text: String!
+    init(uid: String, wid: String, text: String){
+        self.text = text
+        self.uid = uid
+        self.wid = wid
+    }
+    init(_ standarAction: StandardAction){}
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: CreatePostAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
 

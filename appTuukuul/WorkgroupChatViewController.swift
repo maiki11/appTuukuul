@@ -12,12 +12,33 @@ import XLPagerTabStrip
 
 class WorkgroupChatViewController: UIViewController {
 
+    @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
     var posts:[WorkgroupPost] = []
     var user:User = store.state.userState.user!
     var offset = 0;
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y = 0
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,8 +53,12 @@ class WorkgroupChatViewController: UIViewController {
             vc.url = self.posts[indexPath.row].post!
         }
     }
- 
-
+    
+    @IBAction func sendPost(_ sender: Any) {
+        print(store.state.userState.user.id!)
+        print(store.state.workgroupState.workgroup.id!)
+        store.dispatch(CreatePostAction(uid: store.state.userState.user.id!, wid: store.state.workgroupState.workgroup.id!, text: self.textField.text!))
+    }
 }
 
 extension WorkgroupChatViewController: IndicatorInfoProvider{
@@ -52,6 +77,11 @@ extension WorkgroupChatViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(indexPath.row)
+        if indexPath.row == 0 {
+            self.offset += 20
+            getPostsData()
+        }
         let post:WorkgroupPost = self.posts[indexPath.row]
         
         if user.id! == post.user! {
@@ -137,7 +167,12 @@ extension WorkgroupChatViewController: StoreSubscriber {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         getPostsData()
+//        print(self.posts.count)
         self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
@@ -145,8 +180,14 @@ extension WorkgroupChatViewController: StoreSubscriber {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y <= 0){
-            self.offset+=20
-            getPostsData()
+            print("Llegue")
+//            getPostsData()
+//            self.offset+=20
+//            let index = IndexPath(row: 10, section: 0)
+//            print(scrollView.contentOffset)
+//            self.tableView.scrollToRow(at: index, at: UITableViewScrollPosition.middle, animated: false)
+//            store.state.workgroupState.status = .finished
+            
         }
     }
     
@@ -162,7 +203,15 @@ extension WorkgroupChatViewController: StoreSubscriber {
         switch state.status {
         case .finished:
             self.posts = state.posts
+            let indexPath = IndexPath(row: self.posts.count - 1 - self.offset, section: 0)
+            print(indexPath.row)
             self.tableView.reloadData()
+            if self.offset == 0{
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: false)
+            } else {
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
+            }
+            
             break
         default:
             break

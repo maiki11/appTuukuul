@@ -57,6 +57,11 @@ struct WorkgroupReducer: Reducer {
                 getWorkgroupPosts(wid: action.wid, offset: action.offset)
             }
             break
+        case let action as CreatePostAction:
+            if action.wid != nil && action.uid != nil && action.text != nil {
+                state.status = .loading
+                createPost(wid: action.wid, uid: action.uid, text: action.text)
+            }
         default:
             break
         }
@@ -138,6 +143,19 @@ struct WorkgroupReducer: Reducer {
             case .failure(let error):
                 print(error)
                 break
+            }
+        })
+    }
+    
+    func createPost(wid: String, uid: String, text: String) -> Void {
+        print("Creating post")
+        workgroupProvider.request(.createPost(wid: wid, uid: uid, text: text), completion: {result in
+            switch(result) {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+            print(error)
+            break
             }
         })
     }
