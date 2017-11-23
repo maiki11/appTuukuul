@@ -417,7 +417,7 @@
 				TargetAttributes = {
 					84B983FE1F4812DD00E7F337 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = Q239838D2U;
+						DevelopmentTeam = XSFS8X2N87;
 						ProvisioningStyle = Automatic;
 					};
 					84B984121F4812DE00E7F337 = {
@@ -760,8 +760,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = Q239838D2U;
+				DEVELOPMENT_TEAM = XSFS8X2N87;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = miguelreina.appTuukuul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -775,8 +776,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = Q239838D2U;
+				DEVELOPMENT_TEAM = XSFS8X2N87;
 				INFOPLIST_FILE = appTuukuul/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = miguelreina.appTuukuul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
