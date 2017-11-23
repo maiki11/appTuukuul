@@ -10,10 +10,11 @@ import UIKit
 import ReSwift
 import XLPagerTabStrip
 
-class WorkgroupChatViewController: UIViewController {
+class WorkgroupChatViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var sendButton: UIButton!
     var posts:[WorkgroupPost] = []
     var user:User = store.state.userState.user!
     var offset = 0;
@@ -57,7 +58,16 @@ class WorkgroupChatViewController: UIViewController {
     @IBAction func sendPost(_ sender: Any) {
         print(store.state.userState.user.id!)
         print(store.state.workgroupState.workgroup.id!)
+        if self.textField.text != "" {
         store.dispatch(CreatePostAction(uid: store.state.userState.user.id!, wid: store.state.workgroupState.workgroup.id!, text: self.textField.text!))
+            self.textField.text = ""
+        }
+
+
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view != self.sendButton
     }
 }
 

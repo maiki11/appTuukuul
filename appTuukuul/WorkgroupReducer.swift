@@ -153,6 +153,13 @@ struct WorkgroupReducer: Reducer {
             switch(result) {
             case .success(let response):
                 print(response)
+                // El response debería traer una atributo con todo el post ya listo y así lo agrego al state como la última línea comentada.
+//                var post = WorkgroupPost()
+//                post.post = text
+//                post.user = uid
+//                post.fileType = "text"
+//                store.state.workgroupState.posts = store.state.workgroupState.posts + [post]
+                store.state.workgroupState.status = .finished
             case .failure(let error):
             print(error)
             break

@@ -50,6 +50,9 @@ class WorkgroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        store.state.workgroupState.files = []
+        store.state.workgroupState.posts = []
+        store.state.workgroupState.tasks = []
         self.performSegue(withIdentifier: "workgroupSegue", sender: self.workgroups[indexPath.row])
     }
 
