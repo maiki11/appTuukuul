@@ -53,6 +53,7 @@ class WorkgroupsTableViewController: UITableViewController {
         store.state.workgroupState.files = []
         store.state.workgroupState.posts = []
         store.state.workgroupState.tasks = []
+        print(store.state.workgroupState)
         self.performSegue(withIdentifier: "workgroupSegue", sender: self.workgroups[indexPath.row])
     }
 

@@ -10,6 +10,7 @@ target 'appTuukuul' do
   pod 'ReSwift' 
   pod 'ReSwiftRouter'
   pod 'ReSwiftRecorder'
+  pod 'PusherSwift'
   pod 'Alamofire', '~> 4.4'
   pod 'Moya-ModelMapper', '4.0.0'
   pod 'Whisper'

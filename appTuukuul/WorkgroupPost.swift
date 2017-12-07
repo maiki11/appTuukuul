@@ -36,6 +36,7 @@ struct WorkgroupPost : Mappable {
         self.fullName = map.optionalFrom(WorkgroupPost.kFullName)
         self.fileType = map.optionalFrom(WorkgroupPost.kfileType)
     }
+    
     init() {
     }
     

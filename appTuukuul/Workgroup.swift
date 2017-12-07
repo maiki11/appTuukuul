@@ -14,6 +14,7 @@ struct Workgroup : Mappable {
     static let kId = "id"
     static let kName = "name"
     static let kImg = "img"
+    static let kToken = "token"
 //    static let kMembers = "members"
 //    static let kAdmin = "admin"
 //    static let kCover = "cover"
@@ -21,6 +22,7 @@ struct Workgroup : Mappable {
     var id: String?
     var name: String?
     var img: String?
+    var token: String?
 //    var cover: String?
 //    var admin: String?
     
@@ -28,6 +30,7 @@ struct Workgroup : Mappable {
         self.id = map.optionalFrom("id")
         self.img = map.optionalFrom(Workgroup.kImg)
         self.name = map.optionalFrom(Workgroup.kName)
+        self.token = map.optionalFrom(Workgroup.kToken)
 //        try self.cover = map.from(Workgroup.kCover)
 //        try self.admin = map.from(Workgroup.kAdmin)
         //try self.members = map.from(Workgroup.kMembers)

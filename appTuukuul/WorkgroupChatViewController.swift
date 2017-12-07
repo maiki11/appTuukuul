@@ -8,9 +8,10 @@
 
 import UIKit
 import ReSwift
+import PusherSwift
 import XLPagerTabStrip
 
-class WorkgroupChatViewController: UIViewController, UIGestureRecognizerDelegate {
+class WorkgroupChatViewController: UIViewController, UIGestureRecognizerDelegate, PusherDelegate {
 
     @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
@@ -18,6 +19,7 @@ class WorkgroupChatViewController: UIViewController, UIGestureRecognizerDelegate
     var posts:[WorkgroupPost] = []
     var user:User = store.state.userState.user!
     var offset = 0;
+    var pusher: Pusher! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -182,10 +184,64 @@ extension WorkgroupChatViewController: StoreSubscriber {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("View did appear")
+        pusher = Pusher(key: "33c0b3a95370c4456a8c")
+        
+        pusher.connect()
+        
+        pusher.delegate = self
+
+        let _ = pusher.bind({ (message: Any?) in
+            if let message = message as? [String: AnyObject], let eventName = message["TNM_Event_WG_\(store.state.workgroupState.workgroup.id!)"] as? String, eventName == "pusher:error" {
+                if let data = message["data"] as? [String: AnyObject], let errorMessage = data["message"] as? String {
+                    print("Error message: \(errorMessage)")
+                }
+            }
+        })
+        
+        let onMemberAdded = { (member: PusherPresenceChannelMember) in
+            print(member)
+        }
+        
+        let chan = pusher.subscribe("Tuukuul_Notificacions", onMemberAdded: onMemberAdded)
+        
+        let _ = chan.bind(eventName: "TNM_Event_WG_\(store.state.workgroupState.workgroup.token!)", callback: { data in
+            print(data)
+            let _ = self.pusher.subscribe("Tuukuul_Notificacions", onMemberAdded: onMemberAdded)
+            
+            if let data = data as? [String : AnyObject] {
+                if let testVal = data["test"] as? String {
+                    print(testVal)
+                }
+            }
+        })
+        
+        
+//        let channel = pusher.subscribe("Tuukuul_Notificacions")
+//        let _ = channel.bind(eventName: "TNM_Event_WG_\(store.state.workgroupState.workgroup.id!)") { (data: Any?) -> Void in
+//            if let data = data as? [String:AnyObject]{
+//                if let message = data["message"] as? String{
+//                    print("Mensaje a ver si sale")
+//                    print(message)
+//                }
+//            }
+//        }
+        
         
     }
+    
+    func subscribedToChannel(name: String) {
+        print("Subscribed to \(name)")
+    }
+    
+    func subscribedToInterest(name: String) {
+        print("Subscribed to \(name)")
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         store.unsubscribe(self)
+        pusher.disconnect()
+        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
