@@ -16,7 +16,9 @@ let workgroupActionTypeMap: TypeMap = [GetWorkgroupAction.type: GetWorkgroupActi
                                        DeleteUserWorkgroupAction.type : DeleteUserWorkgroupAction.self,
                                        GetWorkgroupTasksAction.type: GetWorkgroupTasksAction.self,
                                        GetWorkgroupFilesAction.type: GetWorkgroupFilesAction.self,
-                                       GetWorkgroupPostsAction.type: GetWorkgroupPostsAction.self]
+                                       GetWorkgroupPostsAction.type: GetWorkgroupPostsAction.self,
+                                       SetStatusWorkgroupTaskAction.type: SetStatusWorkgroupTaskAction.self
+                                            ]
 
 struct GetWorkgroupAction: StandardActionConvertible {
     static let type = "GET_WORKGROUP_ACTION"
@@ -89,6 +91,20 @@ struct GetWorkgroupTasksAction: StandardActionConvertible {
     
     func toStandardAction() -> StandardAction {
         return StandardAction(type: GetWorkgroupTasksAction.type, payload: [:], isTypedAction: true)
+    }
+}
+
+struct SetStatusWorkgroupTaskAction: StandardActionConvertible{
+    static let type = "SET_STATUS_WORKGROUP_TASK_ACTION"
+    var id:String!
+    init(id: String) {
+        self.id = id
+    }
+    init(_ standardAction: StandardAction) {
+    }
+    
+    func toStandardAction() -> StandardAction {
+        return StandardAction(type: SetStatusWorkgroupTaskAction.type, payload: [:], isTypedAction: true)
     }
 }
 

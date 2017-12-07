@@ -9,20 +9,24 @@
 import UIKit
 
 class WTaskTableViewCell: UITableViewCell {
-
+    var task :WorkgroupTask!
     @IBOutlet var taskImg: UIImageView!
     @IBOutlet var taskNameLbl: UILabel!
+    @IBOutlet weak var completeTask: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         taskImg.circleImage()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    @IBAction func handleDidChange(_ sender: UISwitch) {
+        print("hola")
+        print("TASK",task)
+        store.dispatch(SetStatusWorkgroupTaskAction(id: task.id!))
+        print("adios")
+    }
 }

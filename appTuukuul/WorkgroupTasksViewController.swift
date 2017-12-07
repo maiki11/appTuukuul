@@ -17,25 +17,12 @@ class WorkgroupTasksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "taskDetails"{
@@ -64,8 +51,9 @@ extension WorkgroupTasksViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "taskCell_ID") as! WTaskTableViewCell
         
-        let task = self.tasks[indexPath.row]
         
+        let task = self.tasks[indexPath.row]
+        cell.task = task
         cell.taskNameLbl.text = task.name!
         cell.taskImg.loadImage(urlString: "\(Constants.ServerApi.filesurl)\(task.img!)")
         
@@ -90,6 +78,7 @@ extension WorkgroupTasksViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "taskDetails", sender: self.tasks[indexPath.row])
     }
+    
 }
 
 extension WorkgroupTasksViewController: StoreSubscriber {
@@ -112,5 +101,7 @@ extension WorkgroupTasksViewController: StoreSubscriber {
         self.tasks = store.state.workgroupState.tasks
         self.tableView.reloadData()
     }
+    
+    
 
 }

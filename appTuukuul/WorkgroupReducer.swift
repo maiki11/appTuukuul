@@ -118,6 +118,20 @@ struct WorkgroupReducer: Reducer {
         })
     }
     
+    func createPost(wid: String, uid: String, text: String) -> Void {
+        print("setting tasks")
+        workgroupProvider.request(.createPost(wid: wid, uid: uid, text: text), completion: {result in
+            switch(result) {
+            case .success(let response):
+                print(response)
+                store.state.workgroupState.status = .finished
+            case .failure(let error):
+                print(error)
+                break
+            }
+        })
+    }
+    
     func getWorkgroupFiles(wid: String, fid:String) -> Void {
         workgroupProvider.request(.getWorkgroupFiles(wid: wid, fid: fid), completion: { result in
             switch(result){
@@ -147,18 +161,12 @@ struct WorkgroupReducer: Reducer {
         })
     }
     
-    func createPost(wid: String, uid: String, text: String) -> Void {
-        print("Creating post")
-        workgroupProvider.request(.createPost(wid: wid, uid: uid, text: text), completion: {result in
+    func setTaskWorkgroup(id: String) -> Void {
+        print("Cambiando la tarea")
+        workgroupProvider.request(.setTaskWorkgroup(id: id), completion: {result in
             switch(result) {
             case .success(let response):
                 print(response)
-                // El response debería traer una atributo con todo el post ya listo y así lo agrego al state como la última línea comentada.
-//                var post = WorkgroupPost()
-//                post.post = text
-//                post.user = uid
-//                post.fileType = "text"
-//                store.state.workgroupState.posts = store.state.workgroupState.posts + [post]
                 store.state.workgroupState.status = .finished
             case .failure(let error):
             print(error)

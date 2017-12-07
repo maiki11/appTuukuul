@@ -605,10 +605,14 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJh-Cv-nOW">
                                                     <rect key="frame" x="316" y="12" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="handleDidChange:" destination="36t-nP-L2w" eventType="valueChanged" id="oaE-xS-Z92"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completeTask" destination="OJh-Cv-nOW" id="Kdi-Iy-4GT"/>
                                             <outlet property="taskImg" destination="0lG-oy-cEJ" id="XnK-6I-NPd"/>
                                             <outlet property="taskNameLbl" destination="o3g-6G-P1C" id="i6C-9u-Wes"/>
                                         </connections>
