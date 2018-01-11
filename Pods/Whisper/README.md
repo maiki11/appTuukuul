@@ -39,28 +39,28 @@ In Whisper, there is no need to think about scroll view insets anymore, this wil
 
 ## Usage
 
-The usage of the component is so simple, you just create a message in the case of Whisper, an announcement in the case of a Shout or a Murmur in the case of a Whistle. Because there maybe conflict with `show` from `UIViewController`, you need to explicitly use `Whisper` namespace to call `show`
+The usage of the component is so simple, you just create a message in the case of Whisper, an announcement in the case of a Shout or a Murmur in the case of a Whistle, it's done like this:
 
 ##### For a Whisper:
 
 ```swift
-let message = Message(title: "Enter your message here.", backgroundColor: .red)
+let message = Message(title: "Enter your message here.", backgroundColor: UIColor.redColor())
 
 // Show and hide a message after delay
-Whisper.show(whisper: message, to: navigationController, action: .show)
+show(whisper: message, to: navigationController, action: .Show)
 
 // Present a permanent message
-Whisper.show(whisper: message, to: navigationController, action: .present)
+show(whisper: message, to: navigationController, action: .Present)
 
 // Hide a message
-Whisper.hide(whisperFrom: navigationController)
+hide(whisperFrom: navigationController)
 ```
 
 ##### For a Shout:
 
 ```swift
 let announcement = Announcement(title: "Your title", subtitle: "Your subtitle", image: UIImage(named: "avatar"))
-Whisper.show(shout: announcement, to: navigationController, completion: {
+show(shout: announcement, to: navigationController, completion: {
   print("The shout was silent.")
 })
 ```
@@ -71,13 +71,13 @@ Whisper.show(shout: announcement, to: navigationController, completion: {
 let murmur = Murmur(title: "This is a small whistle...")
 
 // Show and hide a message after delay
-Whisper.show(whistle: murmur, action: .show(0.5))
+show(whistle: murmur, action: .Show(0.5))
 
 // Present a permanent status bar message
-Whisper.show(whistle: murmur, action: .present)
+show(whistle: murmur, action: .Present)
 
 // Hide a message
-Whisper.hide(whistleAfter: 3)
+hide(whistleAfter: 3)
 ```
 
 If you want to use **Whisper** with Objective-C, you can find information about it [here](https://github.com/hyperoslo/Whisper/wiki/Using-Whisper-in-Objective-C).

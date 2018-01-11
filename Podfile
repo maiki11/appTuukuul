@@ -13,9 +13,9 @@ target 'appTuukuul' do
   pod 'PusherSwift'
   pod 'Alamofire', '~> 4.4'
   pod 'Moya-ModelMapper', '4.0.0'
-  pod 'Whisper'
+  pod 'Whisper', '4.0.0'
   pod 'KDLoadingView', '~> 1.0.0'
-  pod 'SwipeCellKit'
+  pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
   pod 'XLPagerTabStrip', :git => 'https://github.com/KelvinJin/XLPagerTabStrip', :branch => 'swift3'
 
 end
